@@ -205,7 +205,7 @@
     .mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
     .mini-grid .input, .mini-grid .select, .mini-grid .textarea { padding: 9px 10px; border-radius: 10px; font-size: 12px; }
     .mini-grid .textarea { min-height: 65px; grid-column: 1 / -1; }
-    .stats-editor { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+    .stats-editor { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
     .stat-input { display: grid; gap: 4px; }
     .stat-input label { color: var(--muted); font-size: 10px; font-weight: 800; }
     .stat-input input { width: 100%; text-align: center; padding: 8px 4px; }
@@ -254,7 +254,7 @@
     .nickname { margin-top: 7px; color: var(--accent); font-size: 17px; font-weight: 900; }
     .badges { display: flex; flex-wrap: wrap; gap: 7px; margin: 19px 0; }
     .badge { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.065); color: #dcebf3; font-size: 12px; font-weight: 800; }
-    .intro-copy { margin: 0 0 26px; color: #d5e4ec; font-size: 17px; line-height: 1.7; }
+    .intro-copy { margin: 0 0 26px; color: #d5e4ec; font-size: 17px; line-height: 1.7; white-space: pre-line; }
     .stats { display: grid; gap: 11px; }
     .stat-row { display: grid; grid-template-columns: 62px 1fr 38px; gap: 10px; align-items: center; color: var(--muted); font-size: 12px; }
     .bar { height: 9px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.08); }
@@ -463,34 +463,227 @@
     (() => {
       'use strict';
 
-      const STORAGE_KEY = 'futsal-moderator-draft-v3';
+      const STORAGE_KEY = 'futsal-moderator-draft-v4-inmang';
       const app = document.getElementById('app');
       const toastEl = document.getElementById('toast');
       const jsonImport = document.getElementById('jsonImport');
 
       const defaultPlayers = [
-        ['선수 1', '멀티 플레이어', 'ALL', '오른발', '어디서든 제 몫을 하는 밸런스형 선수입니다.', 76, 72, 80, 74],
-        ['선수 2', '스피드 스타', 'FW', '오른발', '공간을 빠르게 파고들고 역습에서 강점을 보입니다.', 82, 58, 78, 90],
-        ['선수 3', '중원 엔진', 'MF', '양발', '패스 연결과 활동량으로 팀의 템포를 조절합니다.', 77, 70, 88, 76],
-        ['선수 4', '수비 리더', 'DF', '오른발', '대인 수비와 커버 플레이가 안정적인 선수입니다.', 60, 88, 82, 68],
-        ['선수 5', '골 사냥꾼', 'FW', '왼발', '문전 집중력과 강한 슈팅이 장점입니다.', 90, 55, 72, 79],
-        ['선수 6', '압박 머신', 'MF', '오른발', '쉬지 않고 압박하며 세컨드 볼을 잘 회수합니다.', 70, 79, 92, 78],
-        ['선수 7', '빌드업 장인', 'DF', '양발', '후방에서 침착하게 패스를 전개합니다.', 68, 82, 79, 66],
-        ['선수 8', '라인 브레이커', 'FW', '오른발', '수비 뒷공간 침투와 원터치 플레이가 좋습니다.', 84, 57, 75, 86],
-        ['선수 9', '밸런서', 'MF', '왼발', '공수 간격을 조율하고 동료를 살리는 플레이를 합니다.', 73, 76, 84, 72],
-        ['선수 10', '철벽', 'DF', '오른발', '몸싸움과 슈팅 차단에 강점이 있습니다.', 55, 91, 85, 62],
-        ['선수 11', '테크니션', 'MF', '양발', '좁은 공간에서 볼을 지키고 찬스를 만듭니다.', 85, 64, 75, 81],
-        ['선수 12', '유틸리티', 'ALL', '오른발', '팀이 필요한 위치를 빠르게 채우는 선수입니다.', 72, 74, 81, 73]
-      ].map((p, i) => ({
-        id: makeId(),
-        name: p[0], nickname: p[1], position: p[2], foot: p[3], intro: p[4], strengths: p[1],
-        attack: p[5], defense: p[6], stamina: p[7], pace: p[8], photo: '', order: i
-      }));
+        {
+          id: 'player-jeong-jaeseon',
+          name: '정재선',
+          nickname: '인간 과속카메라',
+          position: 'ALL',
+          foot: '우 5 · 좌 4',
+          strengths: '드리블·슈팅·패스·수비',
+          intro: `나이: 만 26세
+신체: 178cm / 71kg
+점프력: 1m 05cm
+주력: 시속 62km
+체력: 마라톤 완주 경험 수십 번`,
+          attack: 88, defense: 84, stamina: 98, pace: 100, popularity: 94,
+          photo: '', order: 0
+        },
+        {
+          id: 'player-heo-jaehyeok',
+          name: '허재혁',
+          nickname: '1라운드 사기진작형',
+          position: 'MF',
+          foot: '우 3 · 좌 0',
+          strengths: '사기진작',
+          intro: `나이: 만 25세
+신체: 178cm / 73kg
+점프력: 30cm
+주력: 초속 8m
+체력: 1라운드`,
+          attack: 61, defense: 58, stamina: 38, pace: 82, popularity: 99,
+          photo: '', order: 1
+        },
+        {
+          id: 'player-kim-taewoo',
+          name: '김태우',
+          nickname: '중도 우파 3점 슈터',
+          position: 'ALL',
+          foot: '중도 우파',
+          strengths: '수비라인 컨트롤·마무리',
+          intro: `나이: 만 26세
+신체: 173cm / 75kg(예정)
+주특기: 수비라인 컨트롤, 마무리, 리바운드, 3점슛
+점프력: 러닝 점프 1m 80cm
+주력: 달리다 과속으로 잡힌 적 있음
+체력: 맥구 복귀전 비슷`,
+          attack: 86, defense: 89, stamina: 66, pace: 96, popularity: 100,
+          photo: '', order: 2
+        },
+        {
+          id: 'player-kim-minseong',
+          name: '김민성',
+          nickname: 'Make Our Team Great Again',
+          position: 'MF',
+          foot: '강남 · 잠실 · 대구',
+          strengths: '템포 죽이기·승부사',
+          intro: `나이: 만 25세
+신체: 174cm / 71kg
+주특기: 역습 시 템포 죽이기, 후방 빌드업 시 템포 죽이기, 승부사
+점프력: 러닝 점프 5cm
+주력: 어린이 보호구역 피해가는 편
+체력: 삼수 기록 10초 보유
+Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
+          attack: 57, defense: 68, stamina: 84, pace: 39, popularity: 100,
+          photo: '', order: 3
+        },
+        {
+          id: 'player-no-jaewoo',
+          name: '노재우',
+          nickname: '제로백 18초의 패러슛',
+          position: 'FW',
+          foot: '우(285cm) · 추가 제보: 주발ㅋㅋㅋ',
+          strengths: '패러슛',
+          intro: `나이: 만 25세
+신체: 176cm / 82kg
+점프력: 50cm
+주력: 제로백(0m→100m) 18초
+체력: 늑구람 비슷`,
+          attack: 74, defense: 57, stamina: 67, pace: 72, popularity: 95,
+          photo: '', order: 4
+        },
+        {
+          id: 'player-yoo-minhyeok',
+          name: '유민혁',
+          nickname: '소주 2병 거미손',
+          position: 'GK',
+          foot: '우(290cm)',
+          strengths: '거미손',
+          intro: `나이: 만 26세
+신체: 186cm / 90kg
+점프력: 186cm
+주력: 소주 2병
+체력: 특급전사`,
+          attack: 43, defense: 96, stamina: 95, pace: 70, popularity: 96,
+          photo: '', order: 5
+        },
+        {
+          id: 'player-lee-hyeonuk',
+          name: '이현욱',
+          nickname: '2m 조금 안 되는 농구인',
+          position: 'DF',
+          foot: '오른손',
+          strengths: '농구공 돌리기·리버랑',
+          intro: `나이: 만 25세
+신체: 2m 조금 안 됨 / 69kg
+주특기: 농구공 돌리기
+점프력: 황원주 뛰어넘음
+주력: 리버랑 비슷
+체력: 시즌별 상이`,
+          attack: 65, defense: 86, stamina: 59, pace: 64, popularity: 98,
+          photo: '', order: 6
+        },
+        {
+          id: 'player-kim-segeon',
+          name: '김세건',
+          nickname: '다테마에 공간침투',
+          position: 'FW',
+          foot: '우파',
+          strengths: '주짓기·공간침투',
+          intro: `나이: 만 26세
+신체: 178cm / 80kg
+주특기: 다테마에, 주짓기, 공간침투
+점프력: 탄현역–한성대입구역
+주력: 러닝머신 8.5km/h
+체력: 소주 1병/h`,
+          attack: 82, defense: 83, stamina: 61, pace: 65, popularity: 98,
+          photo: '', order: 7
+        },
+        {
+          id: 'player-hwang-wonju',
+          name: '황원주',
+          nickname: '15cm 특기 보유자',
+          position: 'ALL',
+          foot: '우 10 · 좌 9.5',
+          strengths: '15cm',
+          intro: `나이: 만 26세
+신체: 177.4cm / 68kg
+주특기: 15cm
+점프력: 제로 10cm
+주력: 소주 3잔
+체력: 2교대`,
+          attack: 59, defense: 61, stamina: 79, pace: 53, popularity: 100,
+          photo: '', order: 8
+        },
+        {
+          id: 'player-jeong-jaeuk',
+          name: '정재욱',
+          nickname: '술자리 조기 귀가형 플레이메이커',
+          position: 'FW',
+          foot: '양발로 달리기 가능',
+          strengths: '골주기·멘탈 흔들기',
+          intro: `나이: 만 26세
+신체: 반올림해서 180cm / 70kg
+주특기: 김세건·유재혁 골주기, 트래시토킹으로 멘탈 흔들기 가능
+점프력: 삼환아파트 22층
+주력: 커리어하이 3병
+체력: 술자리에서 가장 먼저 귀가`,
+          attack: 91, defense: 66, stamina: 36, pace: 79, popularity: 100,
+          photo: '', order: 9
+        },
+        {
+          id: 'player-kim-jiwoo',
+          name: '김지우',
+          nickname: '10분 한정 IMZ 축구력 GOAT',
+          position: 'ALL',
+          foot: '주로 발기됨',
+          strengths: '물빵·엉덩이 부비기·드리블',
+          intro: `체력: 전반 10분 한정 IMZ 축구력 GOAT, 이후 JOAT
+장점: 물빵, 엉덩이 부비기, 공 줍는 척 드리블하기
+키: 천장에서부터 재면 180cm`,
+          attack: 99, defense: 72, stamina: 31, pace: 85, popularity: 100,
+          photo: '', order: 10
+        },
+        {
+          id: 'player-jeon-donghee',
+          name: '전동희',
+          nickname: '잠실 점액바름',
+          position: 'ALL',
+          foot: '좌파',
+          strengths: '아전기석병·지구력',
+          intro: `나이: 만 25세
+신체: 178cm / 74kg(예정)
+체력: 페이스 4.5분으로 5km
+주특기: 아전기석병
+장점: 잠실에 점액바름
+주력: 1.5병/h(최대)
+부작용: 잠실에 점액바름`,
+          attack: 73, defense: 69, stamina: 96, pace: 91, popularity: 99,
+          photo: '', order: 11
+        },
+        {
+          id: 'player-yoo-jaehyeok',
+          name: '유재혁',
+          nickname: '',
+          position: 'ALL',
+          foot: '',
+          strengths: '프로필 작성 예정',
+          intro: `프로필 작성 예정`,
+          attack: 50, defense: 50, stamina: 50, pace: 50, popularity: 50,
+          photo: '', order: 12
+        },
+        {
+          id: 'player-bae-byeongmin',
+          name: '배병민',
+          nickname: '',
+          position: 'ALL',
+          foot: '',
+          strengths: '프로필 작성 예정',
+          intro: `프로필 작성 예정`,
+          attack: 50, defense: 50, stamina: 50, pace: 50, popularity: 50,
+          photo: '', order: 13
+        }
+      ];
 
       const initialState = () => ({
-        version: 3,
+        version: 4,
         stage: 'setup',
-        eventName: '우리끼리 풋살 드래프트',
+        eventName: '인망즈 풋살 드래프트',
         captainA: '주장 A',
         captainB: '주장 B',
         mode: 'snake',
@@ -583,7 +776,7 @@
         return `<header class="topbar">
           <div class="brand">
             <div class="brand-mark">FD</div>
-            <div><h1>${esc(state.eventName || '풋살 캡틴 드래프트')}</h1><p>사회자 진행용 · 자동 저장 · Netlify 정적 배포</p></div>
+            <div><h1>${esc(state.eventName || '풋살 캡틴 드래프트')}</h1><p>사회자 진행용 · 자동 저장 · GitHub Pages 정적 배포</p></div>
           </div>
           <div class="top-actions">
             <button class="btn secondary small" data-fullscreen><span class="label">발표 화면</span> ⛶</button>
@@ -633,7 +826,7 @@
                     <option value="B" ${state.firstCaptain === 'B' ? 'selected' : ''}>주장 B</option>
                   </select>
                 </div>
-                <div class="notice">이 버전은 <b>사회자 1명</b>이 선수 소개와 지명을 모두 조작하는 방식입니다. 별도 서버 없이 Netlify에 바로 올릴 수 있으며 데이터는 현재 브라우저에 자동 저장됩니다.</div>
+                <div class="notice">이 버전은 <b>사회자 1명</b>이 선수 소개와 지명을 모두 조작하는 방식입니다. 별도 서버 없이 GitHub Pages에 바로 올릴 수 있으며 데이터는 현재 브라우저에 자동 저장됩니다.</div>
                 <button class="btn full" data-save-setup>설정 저장</button>
                 <button class="btn blue full" data-go-profiles ${state.players.length < 2 ? 'disabled' : ''}>선수 소개 시작</button>
                 <p class="help">선수 카드에서 이름·포지션·소개·능력치를 수정할 수 있습니다. 사진은 자동으로 축소해 저장합니다.</p>
@@ -670,9 +863,7 @@
             <select class="select" data-key="position">
               ${['GK','DF','MF','FW','ALL'].map(v => `<option value="${v}" ${player.position === v ? 'selected' : ''}>${v}</option>`).join('')}
             </select>
-            <select class="select" data-key="foot">
-              ${['오른발','왼발','양발'].map(v => `<option value="${v}" ${player.foot === v ? 'selected' : ''}>${v}</option>`).join('')}
-            </select>
+            <input class="input" data-key="foot" value="${esc(player.foot)}" placeholder="주발 / 주발 드립" maxlength="40" />
             <input class="input" data-key="strengths" value="${esc(player.strengths)}" placeholder="강점 키워드" maxlength="30" />
             <div class="photo-row">
               <input class="input" data-key="photo" value="${esc(player.photo && !player.photo.startsWith('data:') ? player.photo : '')}" placeholder="사진 URL 또는 업로드" />
@@ -685,6 +876,7 @@
             ${statInput('수비', 'defense', player.defense)}
             ${statInput('체력', 'stamina', player.stamina)}
             ${statInput('속도', 'pace', player.pace)}
+            ${statInput('인망력', 'popularity', player.popularity)}
           </div>
           <button class="btn secondary small" data-save-player="${esc(player.id)}">이 선수 저장</button>
         </article>`;
@@ -731,7 +923,7 @@
             <div class="nickname">${esc(player.nickname || player.strengths || '플레이어')}</div>
             <div class="badges">
               <span class="badge">${esc(player.position || 'ALL')}</span>
-              <span class="badge">${esc(player.foot || '오른발')}</span>
+              <span class="badge">${esc(player.foot || '주발 미작성')}</span>
               <span class="badge">${esc(player.strengths || '팀플레이')}</span>
             </div>
             <p class="intro-copy">${esc(player.intro || '등록된 소개가 없습니다.')}</p>
@@ -740,6 +932,7 @@
               ${statRow('수비', player.defense)}
               ${statRow('체력', player.stamina)}
               ${statRow('스피드', player.pace)}
+              ${statRow('인망력', player.popularity)}
             </div>
           </div>
         </article>`;
@@ -830,7 +1023,7 @@
                   <p class="intro-copy">${esc(player.intro)}</p>
                 </div>
               </div>
-              <div class="stats">${statRow('공격', player.attack)}${statRow('수비', player.defense)}${statRow('체력', player.stamina)}${statRow('스피드', player.pace)}</div>
+              <div class="stats">${statRow('공격', player.attack)}${statRow('수비', player.defense)}${statRow('체력', player.stamina)}${statRow('스피드', player.pace)}${statRow('인망력', player.popularity)}</div>
               <div class="modal-actions">
                 <button class="btn secondary" data-close-modal>닫기</button>
                 <button class="btn ${turn === 'B' ? 'warning' : 'blue'}" data-pick="${esc(player.id)}">${esc(captain)} · TEAM ${turn}로 지명</button>
@@ -870,7 +1063,7 @@
       }
 
       function resultPlayer(player, index, team) {
-        return `<div class="team-player team-${team.toLowerCase()}">${avatar(player)}<div><strong>${index}. ${esc(player.name)}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></div><span class="pick-no">${clamp(player.attack)}/${clamp(player.defense)}</span></div>`;
+        return `<div class="team-player team-${team.toLowerCase()}">${avatar(player)}<div><strong>${index}. ${esc(player.name)}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></div><span class="pick-no">인망 ${clamp(player.popularity)}</span></div>`;
       }
 
       function average(players, key) {
@@ -880,7 +1073,7 @@
 
       function balanceSummary(teamA, teamB) {
         const rows = [
-          ['공격', 'attack'], ['수비', 'defense'], ['체력', 'stamina'], ['스피드', 'pace']
+          ['공격', 'attack'], ['수비', 'defense'], ['체력', 'stamina'], ['스피드', 'pace'], ['인망력', 'popularity']
         ];
         return `<div class="balance-card"><h3>팀 평균 능력치</h3>${rows.map(([label, key]) => {
           const a = average(teamA, key), b = average(teamB, key);
@@ -904,7 +1097,7 @@
         const next = { ...existing };
         card.querySelectorAll('[data-key]').forEach(input => {
           const key = input.dataset.key;
-          if (['attack','defense','stamina','pace'].includes(key)) next[key] = clamp(input.value);
+          if (['attack','defense','stamina','pace','popularity'].includes(key)) next[key] = clamp(input.value);
           else if (key === 'photo') {
             const value = input.value.trim();
             if (value) next.photo = value;
@@ -1013,7 +1206,7 @@
 
         if (target.matches('[data-add-player]')) {
           const players = saveAllVisiblePlayers();
-          players.push({ id: makeId(), name: `선수 ${players.length + 1}`, nickname: '', position: 'ALL', foot: '오른발', intro: '나를 한 줄로 소개해 주세요.', strengths: '팀플레이', attack: 70, defense: 70, stamina: 70, pace: 70, photo: '' });
+          players.push({ id: makeId(), name: `선수 ${players.length + 1}`, nickname: '', position: 'ALL', foot: '오른발', intro: '나를 한 줄로 소개해 주세요.', strengths: '팀플레이', attack: 70, defense: 70, stamina: 70, pace: 70, popularity: 70, photo: '' });
           setState({ players }); toast('선수를 추가했습니다.'); return;
         }
 
