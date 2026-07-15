@@ -84,7 +84,7 @@
 
     .stage-nav {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 7px;
       padding: 7px;
       margin-bottom: 18px;
@@ -387,6 +387,149 @@
 
     .kbd { padding: 2px 6px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; color: #dceaf1; background: rgba(255,255,255,.055); font-size: 10px; font-weight: 900; }
 
+
+    .captain-select-layout { display: grid; gap: 16px; }
+    .captain-slots {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 74px minmax(0,1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .captain-slot {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.045);
+    }
+    .captain-slot.team-a { box-shadow: inset 5px 0 0 var(--team-a); }
+    .captain-slot.team-b { box-shadow: inset -5px 0 0 var(--team-b); text-align: right; flex-direction: row-reverse; }
+    .captain-slot .avatar { width: 76px; height: 76px; border-radius: 20px; font-size: 23px; }
+    .captain-slot-copy { min-width: 0; flex: 1; }
+    .captain-slot-copy small { color: var(--muted); font-weight: 900; letter-spacing: .12em; }
+    .captain-slot-copy h3 { margin: 4px 0 3px; font-size: clamp(23px, 4vw, 34px); letter-spacing: -.05em; }
+    .captain-slot-copy p { margin: 0; color: var(--muted); font-size: 12px; }
+    .captain-vs { display: grid; place-items: center; color: var(--muted); font-weight: 1000; font-size: 20px; }
+    .captain-choice-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 11px; }
+    .captain-choice {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(20,61,84,.72);
+      transition: .16s ease;
+    }
+    .captain-choice.selected-a { border-color: rgba(77,181,255,.75); box-shadow: 0 0 0 2px rgba(77,181,255,.23); }
+    .captain-choice.selected-b { border-color: rgba(255,143,107,.75); box-shadow: 0 0 0 2px rgba(255,143,107,.23); }
+    .captain-choice-main { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .captain-choice-main .avatar { width: 54px; height: 54px; border-radius: 15px; font-size: 16px; }
+    .captain-choice-main div:last-child { min-width: 0; }
+    .captain-choice-main strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .captain-choice-main small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .captain-choice-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 11px; }
+    .captain-choice-actions .btn { padding: 8px 7px; font-size: 11px; }
+    .captain-choice.selected-a .captain-choice-actions [data-set-captain="A"],
+    .captain-choice.selected-b .captain-choice-actions [data-set-captain="B"] { filter: brightness(1.18); }
+    .captain-select-actions { display: flex; justify-content: space-between; gap: 9px; flex-wrap: wrap; }
+    .captain-fixed { background: rgba(255,255,255,.09); }
+    .team-a .captain-fixed { border-color: rgba(77,181,255,.38); }
+    .team-b .captain-fixed { border-color: rgba(255,143,107,.38); }
+    .captain-tag { font-size: 9px; letter-spacing: .08em; color: var(--warning); font-weight: 1000; }
+
+    .minigame-layout { display: grid; gap: 18px; }
+    .ladder-board {
+      position: relative;
+      padding: clamp(18px, 3vw, 30px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(77,181,255,.12), transparent 30%),
+        radial-gradient(circle at 82% 8%, rgba(255,143,107,.12), transparent 30%),
+        rgba(0,0,0,.15);
+      overflow: hidden;
+    }
+    .ladder-captains, .ladder-prizes {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(18px, 8vw, 120px);
+    }
+    .ladder-captain {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.055);
+    }
+    .ladder-captain.team-a { box-shadow: inset 0 -4px 0 rgba(77,181,255,.8); }
+    .ladder-captain.team-b { box-shadow: inset 0 -4px 0 rgba(255,143,107,.8); }
+    .ladder-captain .avatar { width: 48px; height: 48px; border-radius: 14px; font-size: 14px; }
+    .ladder-captain-copy { min-width: 0; }
+    .ladder-captain small { display: block; color: var(--muted); font-size: 10px; font-weight: 900; letter-spacing: .1em; }
+    .ladder-captain strong { display: block; margin-top: 3px; font-size: clamp(16px, 2.3vw, 22px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ladder-svg-wrap { width: min(760px, 100%); margin: -2px auto -3px; }
+    .ladder-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .ladder-rail, .ladder-rung {
+      fill: none;
+      stroke: rgba(220,238,247,.42);
+      stroke-width: 9;
+      stroke-linecap: round;
+    }
+    .ladder-rung { stroke-width: 7; }
+    .ladder-node { fill: #d8eaf2; opacity: .7; }
+    .ladder-route {
+      fill: none;
+      stroke-width: 13;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,.16));
+    }
+    .ladder-route.team-a { stroke: var(--team-a); }
+    .ladder-route.team-b { stroke: var(--team-b); }
+    .ladder-board.running .ladder-route {
+      opacity: 1;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: ladderTrace 2.35s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .ladder-board.running .ladder-route.team-b { animation-delay: .08s; }
+    .ladder-board.done .ladder-route { opacity: .85; }
+    .ladder-board.done .ladder-route.winner-route { opacity: 1; stroke-width: 17; filter: drop-shadow(0 0 12px rgba(108,235,197,.45)); }
+    .ladder-prize {
+      padding: 13px 10px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.055);
+      text-align: center;
+      font-weight: 1000;
+      font-size: clamp(15px, 2.4vw, 21px);
+    }
+    .ladder-prize.first { color: #151004; background: linear-gradient(135deg, var(--warning), #fff0b7); border-color: transparent; }
+    .ladder-prize.second { color: #c4d6df; }
+    .ladder-message {
+      margin: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: #d8e7ee;
+      background: rgba(255,255,255,.045);
+      text-align: center;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+    .minigame-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; }
+    .winner-banner { padding: 13px 15px; border: 1px solid rgba(108,235,197,.35); border-radius: 15px; color: #bff9e7; background: rgba(108,235,197,.09); font-weight: 1000; text-align: center; font-size: clamp(16px,2.6vw,22px); }
+    @keyframes ladderTrace { to { stroke-dashoffset: 0; } }
+
     @media (max-width: 1100px) {
       .setup-layout { grid-template-columns: 1fr; }
       .settings-card { position: static; }
@@ -394,6 +537,7 @@
       .pool-panel { grid-column: 1 / -1; grid-row: 1; }
       .team-column { min-height: auto; }
       .player-pool { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      .captain-choice-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
 
     @media (max-width: 780px) {
@@ -401,7 +545,7 @@
       .topbar { align-items: flex-start; }
       .brand p { display: none; }
       .top-actions .label { display: none; }
-      .stage-nav { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      .stage-nav { grid-template-columns: repeat(6, minmax(105px,1fr)); overflow-x: auto; }
       .stage-item { padding: 10px 3px; font-size: 11px; }
       .player-editor-grid { grid-template-columns: 1fr; }
       .profile-wrap { grid-template-columns: 1fr; }
@@ -423,6 +567,12 @@
       .result-team.b { text-align: left; box-shadow: inset 4px 0 0 var(--team-b); }
       .result-grid { grid-template-columns: 1fr; }
       .modal-profile { grid-template-columns: 1fr; }
+      .captain-slots { grid-template-columns: 1fr; }
+      .captain-vs { min-height: 36px; }
+      .captain-slot.team-b { text-align: left; flex-direction: row; box-shadow: inset 5px 0 0 var(--team-b); }
+      .captain-choice-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .ladder-board { padding: 18px 12px; }
+      .ladder-captains, .ladder-prizes { gap: 32px; }
       .modal-profile .profile-photo { width: min(260px, 70%); margin: auto; }
     }
 
@@ -443,6 +593,14 @@
       .turn-card { grid-column: auto; }
       .modal-body { padding: 0 16px 18px; }
       .balance-row { grid-template-columns: 46px 1fr 34px 1fr 34px; }
+      .captain-choice-grid { grid-template-columns: 1fr; }
+      .ladder-captains, .ladder-prizes { gap: 10px; }
+      .ladder-captain { padding: 9px 7px; gap: 7px; }
+      .ladder-captain .avatar { width: 39px; height: 39px; border-radius: 11px; }
+      .ladder-captain small { font-size: 8px; }
+      .ladder-rail { stroke-width: 7; }
+      .ladder-rung { stroke-width: 6; }
+      .ladder-route { stroke-width: 11; }
     }
 
     @media print {
@@ -463,232 +621,27 @@
     (() => {
       'use strict';
 
-      const STORAGE_KEY = 'futsal-moderator-draft-v4-inmang';
+      const STORAGE_KEY = 'futsal-moderator-draft-v5-captain-select';
       const app = document.getElementById('app');
       const toastEl = document.getElementById('toast');
       const jsonImport = document.getElementById('jsonImport');
-
-      const defaultPlayers = [
-        {
-          id: 'player-jeong-jaeseon',
-          name: '정재선',
-          nickname: '인간 과속카메라',
-          position: 'ALL',
-          foot: '우 5 · 좌 4',
-          strengths: '드리블·슈팅·패스·수비',
-          intro: `나이: 만 26세
-신체: 178cm / 71kg
-점프력: 1m 05cm
-주력: 시속 62km
-체력: 마라톤 완주 경험 수십 번`,
-          attack: 88, defense: 84, stamina: 98, pace: 100, popularity: 94,
-          photo: '', order: 0
-        },
-        {
-          id: 'player-heo-jaehyeok',
-          name: '허재혁',
-          nickname: '1라운드 사기진작형',
-          position: 'MF',
-          foot: '우 3 · 좌 0',
-          strengths: '사기진작',
-          intro: `나이: 만 25세
-신체: 178cm / 73kg
-점프력: 30cm
-주력: 초속 8m
-체력: 1라운드`,
-          attack: 61, defense: 58, stamina: 38, pace: 82, popularity: 99,
-          photo: '', order: 1
-        },
-        {
-          id: 'player-kim-taewoo',
-          name: '김태우',
-          nickname: '중도 우파 3점 슈터',
-          position: 'ALL',
-          foot: '중도 우파',
-          strengths: '수비라인 컨트롤·마무리',
-          intro: `나이: 만 26세
-신체: 173cm / 75kg(예정)
-주특기: 수비라인 컨트롤, 마무리, 리바운드, 3점슛
-점프력: 러닝 점프 1m 80cm
-주력: 달리다 과속으로 잡힌 적 있음
-체력: 맥구 복귀전 비슷`,
-          attack: 86, defense: 89, stamina: 66, pace: 96, popularity: 100,
-          photo: '', order: 2
-        },
-        {
-          id: 'player-kim-minseong',
-          name: '김민성',
-          nickname: 'Make Our Team Great Again',
-          position: 'MF',
-          foot: '강남 · 잠실 · 대구',
-          strengths: '템포 죽이기·승부사',
-          intro: `나이: 만 25세
-신체: 174cm / 71kg
-주특기: 역습 시 템포 죽이기, 후방 빌드업 시 템포 죽이기, 승부사
-점프력: 러닝 점프 5cm
-주력: 어린이 보호구역 피해가는 편
-체력: 삼수 기록 10초 보유
-Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
-          attack: 57, defense: 68, stamina: 84, pace: 39, popularity: 100,
-          photo: '', order: 3
-        },
-        {
-          id: 'player-no-jaewoo',
-          name: '노재우',
-          nickname: '제로백 18초의 패러슛',
-          position: 'FW',
-          foot: '우(285cm) · 추가 제보: 주발ㅋㅋㅋ',
-          strengths: '패러슛',
-          intro: `나이: 만 25세
-신체: 176cm / 82kg
-점프력: 50cm
-주력: 제로백(0m→100m) 18초
-체력: 늑구람 비슷`,
-          attack: 74, defense: 57, stamina: 67, pace: 72, popularity: 95,
-          photo: '', order: 4
-        },
-        {
-          id: 'player-yoo-minhyeok',
-          name: '유민혁',
-          nickname: '소주 2병 거미손',
-          position: 'GK',
-          foot: '우(290cm)',
-          strengths: '거미손',
-          intro: `나이: 만 26세
-신체: 186cm / 90kg
-점프력: 186cm
-주력: 소주 2병
-체력: 특급전사`,
-          attack: 43, defense: 96, stamina: 95, pace: 70, popularity: 96,
-          photo: '', order: 5
-        },
-        {
-          id: 'player-lee-hyeonuk',
-          name: '이현욱',
-          nickname: '2m 조금 안 되는 농구인',
-          position: 'DF',
-          foot: '오른손',
-          strengths: '농구공 돌리기·리버랑',
-          intro: `나이: 만 25세
-신체: 2m 조금 안 됨 / 69kg
-주특기: 농구공 돌리기
-점프력: 황원주 뛰어넘음
-주력: 리버랑 비슷
-체력: 시즌별 상이`,
-          attack: 65, defense: 86, stamina: 59, pace: 64, popularity: 98,
-          photo: '', order: 6
-        },
-        {
-          id: 'player-kim-segeon',
-          name: '김세건',
-          nickname: '다테마에 공간침투',
-          position: 'FW',
-          foot: '우파',
-          strengths: '주짓기·공간침투',
-          intro: `나이: 만 26세
-신체: 178cm / 80kg
-주특기: 다테마에, 주짓기, 공간침투
-점프력: 탄현역–한성대입구역
-주력: 러닝머신 8.5km/h
-체력: 소주 1병/h`,
-          attack: 82, defense: 83, stamina: 61, pace: 65, popularity: 98,
-          photo: '', order: 7
-        },
-        {
-          id: 'player-hwang-wonju',
-          name: '황원주',
-          nickname: '15cm 특기 보유자',
-          position: 'ALL',
-          foot: '우 10 · 좌 9.5',
-          strengths: '15cm',
-          intro: `나이: 만 26세
-신체: 177.4cm / 68kg
-주특기: 15cm
-점프력: 제로 10cm
-주력: 소주 3잔
-체력: 2교대`,
-          attack: 59, defense: 61, stamina: 79, pace: 53, popularity: 100,
-          photo: '', order: 8
-        },
-        {
-          id: 'player-jeong-jaeuk',
-          name: '정재욱',
-          nickname: '술자리 조기 귀가형 플레이메이커',
-          position: 'FW',
-          foot: '양발로 달리기 가능',
-          strengths: '골주기·멘탈 흔들기',
-          intro: `나이: 만 26세
-신체: 반올림해서 180cm / 70kg
-주특기: 김세건·유재혁 골주기, 트래시토킹으로 멘탈 흔들기 가능
-점프력: 삼환아파트 22층
-주력: 커리어하이 3병
-체력: 술자리에서 가장 먼저 귀가`,
-          attack: 91, defense: 66, stamina: 36, pace: 79, popularity: 100,
-          photo: '', order: 9
-        },
-        {
-          id: 'player-kim-jiwoo',
-          name: '김지우',
-          nickname: '10분 한정 IMZ 축구력 GOAT',
-          position: 'ALL',
-          foot: '주로 발기됨',
-          strengths: '물빵·엉덩이 부비기·드리블',
-          intro: `체력: 전반 10분 한정 IMZ 축구력 GOAT, 이후 JOAT
-장점: 물빵, 엉덩이 부비기, 공 줍는 척 드리블하기
-키: 천장에서부터 재면 180cm`,
-          attack: 99, defense: 72, stamina: 31, pace: 85, popularity: 100,
-          photo: '', order: 10
-        },
-        {
-          id: 'player-jeon-donghee',
-          name: '전동희',
-          nickname: '잠실 점액바름',
-          position: 'ALL',
-          foot: '좌파',
-          strengths: '아전기석병·지구력',
-          intro: `나이: 만 25세
-신체: 178cm / 74kg(예정)
-체력: 페이스 4.5분으로 5km
-주특기: 아전기석병
-장점: 잠실에 점액바름
-주력: 1.5병/h(최대)
-부작용: 잠실에 점액바름`,
-          attack: 73, defense: 69, stamina: 96, pace: 91, popularity: 99,
-          photo: '', order: 11
-        },
-        {
-          id: 'player-yoo-jaehyeok',
-          name: '유재혁',
-          nickname: '',
-          position: 'ALL',
-          foot: '',
-          strengths: '프로필 작성 예정',
-          intro: `프로필 작성 예정`,
-          attack: 50, defense: 50, stamina: 50, pace: 50, popularity: 50,
-          photo: '', order: 12
-        },
-        {
-          id: 'player-bae-byeongmin',
-          name: '배병민',
-          nickname: '',
-          position: 'ALL',
-          foot: '',
-          strengths: '프로필 작성 예정',
-          intro: `프로필 작성 예정`,
-          attack: 50, defense: 50, stamina: 50, pace: 50, popularity: 50,
-          photo: '', order: 13
-        }
-      ];
+      const defaultPlayers = [{"id":"player-jeong-jaeseon","name":"정재선","nickname":"인간 과속카메라","position":"ALL","foot":"우 5 · 좌 4","strengths":"드리블·슈팅·패스·수비","intro":"나이: 만 26세\n신체: 178cm / 71kg\n점프력: 1m 05cm\n주력: 시속 62km\n체력: 마라톤 완주 경험 수십 번","attack":88,"defense":84,"stamina":98,"pace":100,"popularity":94,"photo":"","order":0},{"id":"player-heo-jaehyeok","name":"허재혁","nickname":"1라운드 사기진작형","position":"MF","foot":"우 3 · 좌 0","strengths":"사기진작","intro":"나이: 만 25세\n신체: 178cm / 73kg\n점프력: 30cm\n주력: 초속 8m\n체력: 1라운드","attack":61,"defense":58,"stamina":38,"pace":82,"popularity":99,"photo":"","order":1},{"id":"player-kim-taewoo","name":"김태우","nickname":"중도 우파 3점 슈터","position":"ALL","foot":"중도 우파","strengths":"수비라인 컨트롤·마무리","intro":"나이: 만 26세\n신체: 173cm / 75kg(예정)\n주특기: 수비라인 컨트롤, 마무리, 리바운드, 3점슛\n점프력: 러닝 점프 1m 80cm\n주력: 달리다 과속으로 잡힌 적 있음\n체력: 맥구 복귀전 비슷","attack":86,"defense":89,"stamina":66,"pace":96,"popularity":100,"photo":"","order":2},{"id":"player-kim-minseong","name":"김민성","nickname":"Make Our Team Great Again","position":"MF","foot":"강남 · 잠실 · 대구","strengths":"템포 죽이기·승부차","intro":"나이: 만 25세\n신체: 174cm / 71kg\n주특기: 역습 시 템포 죽이기, 후방 빌드업 시 템포 죽이기, 승부차\n점프력: 러닝 점프 5cm\n주력: 어린이 보호구역 피해가는 편\n체력: 삼수 기록 10초 보유\nWhy MS?: 상대 조를 망치고 Make Our Team Great Again","attack":57,"defense":68,"stamina":84,"pace":39,"popularity":100,"photo":"","order":3},{"id":"player-no-jaewoo","name":"노재우","nickname":"제로백 18초의 패러슛","position":"FW","foot":"우(285cm) · 추가 제보: 주발ㅋㅋㅋ","strengths":"패러슛","intro":"나이: 만 25세\n신체: 176cm / 82kg\n점프력: 50cm\n주력: 제로백(0m→100m) 18초\n체력: 늑구람 비슷","attack":74,"defense":57,"stamina":67,"pace":72,"popularity":95,"photo":"","order":4},{"id":"player-yoo-minhyeok","name":"유민혁","nickname":"소주 2병 거미손","position":"GK","foot":"우(290cm)","strengths":"거미손","intro":"나이: 만 26세\n신체: 186cm / 90kg\n점프력: 186cm\n주력: 소주 2병\n체력: 특급전사","attack":43,"defense":96,"stamina":95,"pace":70,"popularity":96,"photo":"","order":5},{"id":"player-lee-hyeonuk","name":"이현욱","nickname":"2m 조금 안 되는 농구인","position":"DF","foot":"오른손","strengths":"농구공 돌리기·리바운드","intro":"나이: 만 25세\n신체: 2m 조금 안 됨 / 69kg\n주특기: 농구공 돌리기\n점프력: 황원주 뛰어넘음\n주력: 리바운드 비슷\n체력: 시즌별 상이","attack":65,"defense":86,"stamina":59,"pace":64,"popularity":98,"photo":"","order":6},{"id":"player-kim-segeon","name":"김세건","nickname":"다테마에 공간침투","position":"FW","foot":"우파","strengths":"주짓수·공간침투","intro":"나이: 만 26세\n신체: 178cm / 80kg\n주특기: 다테마에, 주짓수, 공간침투\n점프력: 탄현역–한성대입구역\n주력: 러닝머신 8.5km/h\n체력: 소주 1병/h","attack":82,"defense":83,"stamina":61,"pace":65,"popularity":98,"photo":"","order":7},{"id":"player-hwang-wonju","name":"황원주","nickname":"15cm 특기 보유자","position":"ALL","foot":"우 10 · 좌 9.5","strengths":"15cm","intro":"나이: 만 26세\n신체: 177.4cm / 68kg\n주특기: 15cm\n점프력: 제로 10cm\n주력: 소주 3잔\n체력: 2교대","attack":59,"defense":61,"stamina":79,"pace":53,"popularity":100,"photo":"","order":8},{"id":"player-jeong-jaeuk","name":"정재욱","nickname":"술자리 조기 귀가형 플레이메이커","position":"FW","foot":"양발로 달리기 가능","strengths":"골주기·멘탈 흔들기","intro":"나이: 만 26세\n신체: 반올림해서 180cm / 70kg\n주특기: 김세건·유재혁 골주기, 드래곤볼링으로 멘탈 흔들기 가능\n점프력: 삼환아파트 22층\n주력: 키리야마 아이 3병\n체력: 술자리에서 가장 먼저 귀가","attack":91,"defense":66,"stamina":36,"pace":79,"popularity":100,"photo":"","order":9},{"id":"player-kim-jiwoo","name":"김지우","nickname":"10분 한정 IMZ 축구력 GOAT","position":"ALL","foot":"주로 발기됨","strengths":"물빵·엉덩이 부비기·드리블","intro":"체력: 전반 10분 한정 IMZ 축구력 GOAT, 이후 JOAT\n장점: 물빵, 엉덩이 부비기, 공중눈척 드리블하기\n키: 건장해서부터 재면 180cm","attack":99,"defense":72,"stamina":31,"pace":85,"popularity":100,"photo":"","order":10},{"id":"player-jeon-donghee","name":"전동희","nickname":"잠실 점액바름","position":"ALL","foot":"좌파","strengths":"아전거실병·지구력","intro":"나이: 만 25세\n신체: 178cm / 74kg(예정)\n체력: 페이스 4.5분으로 5km\n주특기: 아전거실병\n장점: 잠실에 점액바름\n주력: 1.5병/h(최대)\n부작용: 잠실에 점액바름","attack":73,"defense":69,"stamina":96,"pace":91,"popularity":99,"photo":"","order":11},{"id":"player-yoo-jaehyeok","name":"유재혁","nickname":"","position":"ALL","foot":"","strengths":"프로필 작성 예정","intro":"프로필 작성 예정","attack":50,"defense":50,"stamina":50,"pace":50,"popularity":50,"photo":"","order":12},{"id":"player-bae-byeongmin","name":"배병민","nickname":"","position":"ALL","foot":"","strengths":"프로필 작성 예정","intro":"프로필 작성 예정","attack":50,"defense":50,"stamina":50,"pace":50,"popularity":50,"photo":"","order":13}];
+      const validStages = ['setup', 'profiles', 'captains', 'minigame', 'draft', 'result'];
 
       const initialState = () => ({
-        version: 4,
+        version: 7,
         stage: 'setup',
         eventName: '인망즈 풋살 드래프트',
-        captainA: '주장 A',
-        captainB: '주장 B',
         mode: 'snake',
         firstCaptain: 'A',
         players: structuredClone(defaultPlayers),
+        captainAId: null,
+        captainBId: null,
+        gameStatus: 'idle',
+        gameWinner: null,
+        gameMessage: '새 사다리를 만들고 결과 확인을 눌러 주세요.',
+        ladderRungs: [],
+        ladderPrizeLane: 0,
         picks: [],
         profileIndex: 0,
         selectedPlayerId: null,
@@ -698,43 +651,84 @@ Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
       let state = loadState();
       let toastTimer = null;
       let photoTargetId = null;
+      let miniGameTimer = null;
 
       function makeId() {
         try { return crypto.randomUUID(); }
         catch { return 'p_' + Math.random().toString(36).slice(2) + Date.now().toString(36); }
       }
 
+      function normalizedState(parsed) {
+        const base = initialState();
+        const players = Array.isArray(parsed?.players) ? parsed.players : base.players;
+        const ids = new Set(players.map(p => p.id));
+        let captainAId = parsed?.captainAId || players.find(p => p.name === parsed?.captainA)?.id || null;
+        let captainBId = parsed?.captainBId || players.find(p => p.name === parsed?.captainB)?.id || null;
+        if (!ids.has(captainAId)) captainAId = null;
+        if (!ids.has(captainBId) || captainBId === captainAId) captainBId = null;
+        const captainIds = new Set([captainAId, captainBId].filter(Boolean));
+        const validPicks = Array.isArray(parsed?.picks)
+          ? parsed.picks.filter(p => ids.has(p.playerId) && !captainIds.has(p.playerId))
+              .filter((p, i, arr) => arr.findIndex(x => x.playerId === p.playerId) === i)
+              .map((p, i) => ({ ...p, team: p.team === 'B' ? 'B' : 'A', pickNumber: i + 1 }))
+          : [];
+        let stage = validStages.includes(parsed?.stage) ? parsed.stage : 'setup';
+        if (stage === 'minigame' && (!captainAId || !captainBId)) stage = 'captains';
+        const parsedWinner = parsed?.gameWinner === 'B' ? 'B' : parsed?.gameWinner === 'A' ? 'A' : null;
+        const gameStatus = ['idle','running','done'].includes(parsed?.gameStatus) ? parsed.gameStatus : 'idle';
+        const ladderRungs = Array.isArray(parsed?.ladderRungs)
+          ? parsed.ladderRungs.map(Number).filter(y => Number.isFinite(y) && y >= 105 && y <= 595).sort((a,b) => a-b)
+          : [];
+        const ladderPrizeLane = parsed?.ladderPrizeLane === 1 ? 1 : 0;
+        return {
+          ...base,
+          ...parsed,
+          version: 7,
+          stage,
+          players,
+          captainAId,
+          captainBId,
+          firstCaptain: parsedWinner || (parsed?.firstCaptain === 'B' ? 'B' : 'A'),
+          gameStatus: gameStatus === 'done' && !parsedWinner ? 'idle' : gameStatus,
+          gameWinner: gameStatus === 'done' ? parsedWinner : null,
+          gameMessage: parsed?.gameMessage || '새 사다리를 만들고 결과 확인을 눌러 주세요.',
+          ladderRungs,
+          ladderPrizeLane,
+          picks: validPicks,
+          profileIndex: Math.max(0, Math.min(Number(parsed?.profileIndex) || 0, Math.max(0, players.length - 1))),
+          selectedPlayerId: null
+        };
+      }
+
       function loadState() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return initialState();
-          const parsed = JSON.parse(raw);
-          if (!parsed || !Array.isArray(parsed.players) || !Array.isArray(parsed.picks)) return initialState();
-          return { ...initialState(), ...parsed, selectedPlayerId: null };
-        } catch {
-          return initialState();
-        }
+          const loaded = raw ? normalizedState(JSON.parse(raw)) : initialState();
+          if (loaded.gameStatus === 'running') {
+            loaded.gameStatus = 'idle';
+            loaded.gameWinner = null;
+            loaded.gameMessage = '사다리 진행 중 새로고침되어 결과 확인 전 상태로 돌아갔습니다.';
+          }
+          return loaded;
+        } catch { return initialState(); }
       }
 
       function saveState() {
         state.updatedAt = Date.now();
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-        catch (error) { toast('브라우저 저장 공간이 부족합니다. 선수 사진 용량을 줄여 주세요.', true); }
+        catch { toast('브라우저 저장 공간이 부족합니다. 선수 사진 용량을 줄여 주세요.', true); }
       }
 
       function setState(patch, shouldRender = true) {
-        state = { ...state, ...patch };
+        state = normalizedState({ ...state, ...patch });
         saveState();
         if (shouldRender) render();
       }
 
       function esc(value = '') {
         return String(value)
-          .replaceAll('&', '&amp;')
-          .replaceAll('<', '&lt;')
-          .replaceAll('>', '&gt;')
-          .replaceAll('"', '&quot;')
-          .replaceAll("'", '&#039;');
+          .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
       }
 
       function clamp(value, min = 0, max = 100) {
@@ -759,25 +753,50 @@ Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
         toastTimer = setTimeout(() => { toastEl.className = 'toast'; }, 2300);
       }
 
-      function stageIndex(stage) { return ['setup', 'profiles', 'draft', 'result'].indexOf(stage); }
+      function captainPlayer(team) {
+        const id = team === 'B' ? state.captainBId : state.captainAId;
+        return state.players.find(p => p.id === id) || null;
+      }
+
+      function captainName(team) {
+        return captainPlayer(team)?.name || `주장 ${team}`;
+      }
+
+      function draftPlayers() {
+        const captainIds = new Set([state.captainAId, state.captainBId].filter(Boolean));
+        return state.players.filter(p => !captainIds.has(p.id));
+      }
+
+      function pickedTeam(team) {
+        return state.picks.filter(p => p.team === team)
+          .map(pick => ({ pick, player: state.players.find(player => player.id === pick.playerId) }))
+          .filter(item => item.player);
+      }
+
+      function fullTeamEntries(team) {
+        const captain = captainPlayer(team);
+        const entries = pickedTeam(team).map(({ pick, player }) => ({ player, isCaptain: false, pickNumber: pick.pickNumber }));
+        return captain ? [{ player: captain, isCaptain: true, pickNumber: 0 }, ...entries] : entries;
+      }
+
+      function stageIndex(stage) { return validStages.indexOf(stage); }
 
       function stageNav() {
         const stages = [
           ['setup', '1. 선수 등록'],
           ['profiles', '2. 프로필 소개'],
-          ['draft', '3. 주장 드래프트'],
-          ['result', '4. 팀 확정']
+          ['captains', '3. 주장 선정'],
+          ['minigame', '4. 사다리타기'],
+          ['draft', '5. 선수 드래프트'],
+          ['result', '6. 팀 확정']
         ];
         const current = stageIndex(state.stage);
-        return `<nav class="stage-nav">${stages.map(([key, label], i) => `<div class="stage-item ${i === current ? 'active' : ''} ${i < current ? 'done' : ''}">${label}</div>`).join('')}</nav>`;
+        return `<nav class="stage-nav">${stages.map(([, label], i) => `<div class="stage-item ${i === current ? 'active' : ''} ${i < current ? 'done' : ''}">${label}</div>`).join('')}</nav>`;
       }
 
       function topbar() {
         return `<header class="topbar">
-          <div class="brand">
-            <div class="brand-mark">FD</div>
-            <div><h1>${esc(state.eventName || '풋살 캡틴 드래프트')}</h1><p>사회자 진행용 · 자동 저장 · GitHub Pages 정적 배포</p></div>
-          </div>
+          <div class="brand"><div class="brand-mark">FD</div><div><h1>${esc(state.eventName || '풋살 캡틴 드래프트')}</h1><p>사회자 진행용 · 자동 저장 · GitHub Pages / Netlify 정적 배포</p></div></div>
           <div class="top-actions">
             <button class="btn secondary small" data-fullscreen><span class="label">발표 화면</span> ⛶</button>
             <button class="btn secondary small" data-export><span class="label">백업</span> ↓</button>
@@ -787,60 +806,35 @@ Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
         </header>`;
       }
 
-      function modeLabel() {
-        return state.mode === 'snake' ? '스네이크 A-B-B-A' : '번갈아 A-B-A-B';
-      }
+      function modeLabel() { return state.mode === 'snake' ? '스네이크 A-B-B-A' : '번갈아 A-B-A-B'; }
 
       function nextTurn(pickCount = state.picks.length) {
         const first = state.firstCaptain === 'B' ? 'B' : 'A';
         const other = first === 'A' ? 'B' : 'A';
-        if (state.mode === 'snake') {
-          const seq = [first, other, other, first];
-          return seq[pickCount % 4];
-        }
+        if (state.mode === 'snake') return [first, other, other, first][pickCount % 4];
         return pickCount % 2 === 0 ? first : other;
       }
 
       function setupView() {
-        return `<main class="shell">
-          ${topbar()}
-          ${stageNav()}
+        return `<main class="shell">${topbar()}${stageNav()}
           <div class="setup-layout">
             <aside class="panel panel-pad settings-card">
-              <div class="section-head"><div><h2>드래프트 설정</h2><p>사회자가 한 기기에서 전체 진행을 조작합니다.</p></div></div>
+              <div class="section-head"><div><h2>드래프트 설정</h2><p>14명 전체를 소개하고 주장 선정 뒤 사다리타기로 선 지명권을 정합니다.</p></div></div>
               <div class="form-grid">
                 <div class="field"><label>행사 이름</label><input class="input" id="eventName" value="${esc(state.eventName)}" maxlength="40" /></div>
-                <div class="two">
-                  <div class="field"><label>주장 A 이름</label><input class="input" id="captainA" value="${esc(state.captainA)}" maxlength="16" /></div>
-                  <div class="field"><label>주장 B 이름</label><input class="input" id="captainB" value="${esc(state.captainB)}" maxlength="16" /></div>
-                </div>
-                <div class="field"><label>지명 방식</label>
-                  <select class="select" id="mode">
-                    <option value="snake" ${state.mode === 'snake' ? 'selected' : ''}>스네이크 · A → B → B → A 반복</option>
-                    <option value="alternate" ${state.mode === 'alternate' ? 'selected' : ''}>번갈아 · A → B → A → B 반복</option>
-                  </select>
-                </div>
-                <div class="field"><label>첫 지명</label>
-                  <select class="select" id="firstCaptain">
-                    <option value="A" ${state.firstCaptain === 'A' ? 'selected' : ''}>주장 A</option>
-                    <option value="B" ${state.firstCaptain === 'B' ? 'selected' : ''}>주장 B</option>
-                  </select>
-                </div>
-                <div class="notice">이 버전은 <b>사회자 1명</b>이 선수 소개와 지명을 모두 조작하는 방식입니다. 별도 서버 없이 GitHub Pages에 바로 올릴 수 있으며 데이터는 현재 브라우저에 자동 저장됩니다.</div>
+                <div class="field"><label>지명 방식</label><select class="select" id="mode">
+                  <option value="snake" ${state.mode === 'snake' ? 'selected' : ''}>스네이크 · A → B → B → A 반복</option>
+                  <option value="alternate" ${state.mode === 'alternate' ? 'selected' : ''}>번갈아 · A → B → A → B 반복</option>
+                </select></div>
+                <div class="notice"><b>진행 순서</b><br>선수 14명 프로필 소개 → 주장 A·B 선정 → 사다리타기로 선 지명 결정 → 남은 12명 드래프트 → 주장 포함 7명씩 팀 완성</div>
                 <button class="btn full" data-save-setup>설정 저장</button>
-                <button class="btn blue full" data-go-profiles ${state.players.length < 2 ? 'disabled' : ''}>선수 소개 시작</button>
-                <p class="help">선수 카드에서 이름·포지션·소개·능력치를 수정할 수 있습니다. 사진은 자동으로 축소해 저장합니다.</p>
+                <button class="btn blue full" data-go-profiles ${state.players.length < 4 ? 'disabled' : ''}>전체 선수 소개 시작</button>
+                <p class="help">주장은 프로필 소개 뒤 14명 중 2명을 선택합니다. 첫 지명권은 주장 선정 후 사다리타기 결과로 정합니다.</p>
               </div>
             </aside>
-
             <section class="panel panel-pad">
-              <div class="section-head">
-                <div><h2>선수 프로필</h2><p>${state.players.length}명 등록됨 · 카드 순서가 소개 순서입니다.</p></div>
-                <button class="btn small" data-add-player>+ 선수 추가</button>
-              </div>
-              <div class="player-editor-grid">
-                ${state.players.map((p, i) => editorCard(p, i)).join('')}
-              </div>
+              <div class="section-head"><div><h2>선수 프로필</h2><p>${state.players.length}명 등록됨 · 카드 순서가 소개 순서입니다.</p></div><button class="btn small" data-add-player>+ 선수 추가</button></div>
+              <div class="player-editor-grid">${state.players.map((p, i) => editorCard(p, i)).join('')}</div>
             </section>
           </div>
         </main>`;
@@ -848,246 +842,248 @@ Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
 
       function editorCard(player, index) {
         return `<article class="editor-card" data-player-editor="${esc(player.id)}">
-          <div class="editor-top">
-            ${avatar(player)}
-            <div class="editor-title"><strong>${esc(player.name || `선수 ${index + 1}`)}</strong><small>${index + 1}번째 소개 · ${esc(player.position || 'ALL')}</small></div>
-            <div class="editor-actions">
-              <button class="icon-btn" data-move-up="${esc(player.id)}" title="위로" ${index === 0 ? 'disabled' : ''}>↑</button>
-              <button class="icon-btn" data-move-down="${esc(player.id)}" title="아래로" ${index === state.players.length - 1 ? 'disabled' : ''}>↓</button>
-              <button class="icon-btn" data-delete-player="${esc(player.id)}" title="삭제">×</button>
-            </div>
+          <div class="editor-top">${avatar(player)}<div class="editor-title"><strong>${esc(player.name || `선수 ${index + 1}`)}</strong><small>${index + 1}번째 소개 · ${esc(player.position || 'ALL')}</small></div>
+            <div class="editor-actions"><button class="icon-btn" data-move-up="${esc(player.id)}" ${index === 0 ? 'disabled' : ''}>↑</button><button class="icon-btn" data-move-down="${esc(player.id)}" ${index === state.players.length - 1 ? 'disabled' : ''}>↓</button><button class="icon-btn" data-delete-player="${esc(player.id)}">×</button></div>
           </div>
           <div class="mini-grid">
             <input class="input" data-key="name" value="${esc(player.name)}" placeholder="이름" maxlength="18" />
-            <input class="input" data-key="nickname" value="${esc(player.nickname)}" placeholder="별명 / 한 줄 캐릭터" maxlength="30" />
-            <select class="select" data-key="position">
-              ${['GK','DF','MF','FW','ALL'].map(v => `<option value="${v}" ${player.position === v ? 'selected' : ''}>${v}</option>`).join('')}
-            </select>
-            <input class="input" data-key="foot" value="${esc(player.foot)}" placeholder="주발 / 주발 드립" maxlength="40" />
-            <input class="input" data-key="strengths" value="${esc(player.strengths)}" placeholder="강점 키워드" maxlength="30" />
-            <div class="photo-row">
-              <input class="input" data-key="photo" value="${esc(player.photo && !player.photo.startsWith('data:') ? player.photo : '')}" placeholder="사진 URL 또는 업로드" />
-              <button class="btn secondary small" data-photo-upload="${esc(player.id)}">사진</button>
-            </div>
+            <input class="input" data-key="nickname" value="${esc(player.nickname)}" placeholder="별명 / 한 줄 캐릭터" maxlength="40" />
+            <select class="select" data-key="position">${['GK','DF','MF','FW','ALL'].map(v => `<option value="${v}" ${player.position === v ? 'selected' : ''}>${v}</option>`).join('')}</select>
+            <input class="input" data-key="foot" value="${esc(player.foot)}" placeholder="주발 / 주발 드립" maxlength="50" />
+            <input class="input" data-key="strengths" value="${esc(player.strengths)}" placeholder="강점 키워드" maxlength="40" />
+            <div class="photo-row"><input class="input" data-key="photo" value="${esc(player.photo && !player.photo.startsWith('data:') ? player.photo : '')}" placeholder="사진 URL 또는 업로드" /><button class="btn secondary small" data-photo-upload="${esc(player.id)}">사진</button></div>
             <textarea class="textarea" data-key="intro" placeholder="선수 소개">${esc(player.intro)}</textarea>
           </div>
-          <div class="stats-editor">
-            ${statInput('공격', 'attack', player.attack)}
-            ${statInput('수비', 'defense', player.defense)}
-            ${statInput('체력', 'stamina', player.stamina)}
-            ${statInput('속도', 'pace', player.pace)}
-            ${statInput('인망력', 'popularity', player.popularity)}
-          </div>
+          <div class="stats-editor">${statInput('공격','attack',player.attack)}${statInput('수비','defense',player.defense)}${statInput('체력','stamina',player.stamina)}${statInput('속도','pace',player.pace)}${statInput('인망력','popularity',player.popularity)}</div>
           <button class="btn secondary small" data-save-player="${esc(player.id)}">이 선수 저장</button>
         </article>`;
       }
 
-      function statInput(label, key, value) {
-        return `<div class="stat-input"><label>${label}</label><input class="input" type="number" min="0" max="100" data-key="${key}" value="${clamp(value)}" /></div>`;
-      }
+      function statInput(label, key, value) { return `<div class="stat-input"><label>${label}</label><input class="input" type="number" min="0" max="100" data-key="${key}" value="${clamp(value)}" /></div>`; }
 
       function profileView() {
         const p = state.players[state.profileIndex] || state.players[0];
         if (!p) return setupView();
-        return `<main class="shell">
-          ${topbar()}
-          ${stageNav()}
-          <section class="profile-stage">
-            <div class="profile-stage-inner">
-              <div class="section-head">
-                <div><h2>선수 프로필 소개</h2><p>좌우 화살표 또는 <span class="kbd">←</span> <span class="kbd">→</span> 키로 넘길 수 있습니다.</p></div>
-                <div class="top-actions">
-                  <button class="btn secondary" data-back-setup>선수 수정</button>
-                  <button class="btn" data-start-draft>드래프트 시작</button>
-                </div>
-              </div>
-              <div class="profile-wrap">
-                <button class="arrow-btn prev" data-profile-prev aria-label="이전 선수">←</button>
-                ${profilePage(p, state.profileIndex, state.players.length)}
-                <button class="arrow-btn next" data-profile-next aria-label="다음 선수">→</button>
-              </div>
-              <div class="dot-row">${state.players.map((_, i) => `<button class="dot ${i === state.profileIndex ? 'active' : ''}" data-profile-index="${i}" aria-label="${i + 1}번 선수"></button>`).join('')}</div>
-            </div>
-          </section>
+        return `<main class="shell">${topbar()}${stageNav()}
+          <section class="profile-stage"><div class="profile-stage-inner">
+            <div class="section-head"><div><h2>선수 프로필 소개</h2><p>14명을 모두 소개한 다음, 이 선수들 중 주장 2명을 고릅니다.</p></div><div class="top-actions"><button class="btn secondary" data-back-setup>선수 수정</button><button class="btn" data-go-captains>주장 선정으로</button></div></div>
+            <div class="profile-wrap"><button class="arrow-btn prev" data-profile-prev>←</button>${profilePage(p, state.profileIndex, state.players.length)}<button class="arrow-btn next" data-profile-next>→</button></div>
+            <div class="dot-row">${state.players.map((_, i) => `<button class="dot ${i === state.profileIndex ? 'active' : ''}" data-profile-index="${i}"></button>`).join('')}</div>
+          </div></section>
         </main>`;
       }
 
       function profilePage(player, index, total) {
-        return `<article class="profile-page">
-          <div class="profile-visual">
-            <div class="profile-index">PLAYER ${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}</div>
-            ${avatar(player, 'profile-photo')}
-          </div>
-          <div class="profile-info">
-            <h2>${esc(player.name)}</h2>
-            <div class="nickname">${esc(player.nickname || player.strengths || '플레이어')}</div>
-            <div class="badges">
-              <span class="badge">${esc(player.position || 'ALL')}</span>
-              <span class="badge">${esc(player.foot || '주발 미작성')}</span>
-              <span class="badge">${esc(player.strengths || '팀플레이')}</span>
-            </div>
+        return `<article class="profile-page"><div class="profile-visual"><div class="profile-index">PLAYER ${String(index + 1).padStart(2,'0')} / ${String(total).padStart(2,'0')}</div>${avatar(player,'profile-photo')}</div>
+          <div class="profile-info"><h2>${esc(player.name)}</h2><div class="nickname">${esc(player.nickname || player.strengths || '플레이어')}</div>
+            <div class="badges"><span class="badge">${esc(player.position || 'ALL')}</span><span class="badge">${esc(player.foot || '미정')}</span><span class="badge">${esc(player.strengths || '팀플레이')}</span></div>
             <p class="intro-copy">${esc(player.intro || '등록된 소개가 없습니다.')}</p>
-            <div class="stats">
-              ${statRow('공격', player.attack)}
-              ${statRow('수비', player.defense)}
-              ${statRow('체력', player.stamina)}
-              ${statRow('스피드', player.pace)}
-              ${statRow('인망력', player.popularity)}
-            </div>
+            <div class="stats">${statRow('공격',player.attack)}${statRow('수비',player.defense)}${statRow('체력',player.stamina)}${statRow('스피드',player.pace)}${statRow('인망력',player.popularity)}</div>
+          </div></article>`;
+      }
+
+      function statRow(label, value) { const n = clamp(value); return `<div class="stat-row"><span>${label}</span><div class="bar"><span style="width:${n}%"></span></div><b>${n}</b></div>`; }
+
+      function captainSlot(team) {
+        const player = captainPlayer(team);
+        return `<article class="captain-slot team-${team.toLowerCase()}">${player ? avatar(player) : '<div class="avatar">?</div>'}
+          <div class="captain-slot-copy"><small>TEAM ${team} CAPTAIN</small><h3>${esc(player?.name || '아직 미정')}</h3><p>${esc(player ? (player.nickname || player.strengths) : `아래에서 주장 ${team}를 선택하세요`)}</p></div>
+          ${player ? `<button class="btn secondary small" data-clear-captain="${team}">해제</button>` : ''}
+        </article>`;
+      }
+
+      function captainChoiceCard(player) {
+        const isA = player.id === state.captainAId;
+        const isB = player.id === state.captainBId;
+        return `<article class="captain-choice ${isA ? 'selected-a' : ''} ${isB ? 'selected-b' : ''}">
+          <div class="captain-choice-main">${avatar(player)}<div><strong>${esc(player.name)}</strong><small>${esc(player.nickname || player.strengths || '프로필 작성 예정')}</small></div></div>
+          <div class="captain-choice-actions">
+            <button class="btn blue" data-set-captain="A" data-player-id="${esc(player.id)}" ${isB ? 'disabled' : ''}>${isA ? 'A 주장 선택됨' : 'A 주장'}</button>
+            <button class="btn warning" data-set-captain="B" data-player-id="${esc(player.id)}" ${isA ? 'disabled' : ''}>${isB ? 'B 주장 선택됨' : 'B 주장'}</button>
           </div>
         </article>`;
       }
 
-      function statRow(label, value) {
-        const n = clamp(value);
-        return `<div class="stat-row"><span>${label}</span><div class="bar"><span style="width:${n}%"></span></div><b>${n}</b></div>`;
-      }
-
-      function draftView() {
-        const pickedIds = new Set(state.picks.map(p => p.playerId));
-        const available = state.players.filter(p => !pickedIds.has(p.id));
-        const teamA = getTeam('A');
-        const teamB = getTeam('B');
-        const done = available.length === 0 && state.players.length > 0;
-        if (done && state.stage !== 'result') {
-          queueMicrotask(() => setState({ stage: 'result', selectedPlayerId: null }));
-        }
-        const turn = nextTurn();
-        const captain = turn === 'A' ? state.captainA : state.captainB;
-
-        return `<main class="shell">
-          ${topbar()}
-          ${stageNav()}
-          <div class="draft-head">
-            <div class="captain-chip"><strong>TEAM A</strong> · ${esc(state.captainA)} · ${teamA.length}명</div>
-            <div class="turn-card"><span>${esc(modeLabel())} · ${state.picks.length + 1}번째 선택</span><b class="pulse">${esc(captain)} 지명 차례</b></div>
-            <div class="captain-chip right"><strong>TEAM B</strong> · ${esc(state.captainB)} · ${teamB.length}명</div>
-          </div>
-
-          <div class="draft-layout">
-            ${teamColumn('A', teamA, turn)}
-            <section class="pool-panel">
-              <div class="pool-head"><h3>남은 선수</h3><span>${available.length}명 · 선수를 누르면 상세 확인 후 지명</span></div>
-              ${available.length ? `<div class="player-pool">${available.map(playerCard).join('')}</div>` : '<div class="empty">모든 선수가 지명되었습니다.</div>'}
-              <div class="pool-actions">
-                <button class="btn secondary small" data-back-profiles>프로필 보기</button>
-                <button class="btn secondary small" data-undo ${state.picks.length ? '' : 'disabled'}>마지막 지명 취소</button>
-                <button class="btn warning small" data-finish-early ${state.picks.length ? '' : 'disabled'}>현재 상태로 팀 확정</button>
-              </div>
-            </section>
-            ${teamColumn('B', teamB, turn)}
-          </div>
-          ${state.selectedPlayerId ? playerModal(state.players.find(p => p.id === state.selectedPlayerId), turn) : ''}
-        </main>`;
-      }
-
-      function getTeam(team) {
-        return state.picks
-          .filter(p => p.team === team)
-          .map(pick => ({ pick, player: state.players.find(player => player.id === pick.playerId) }))
-          .filter(item => item.player);
-      }
-
-      function teamColumn(team, items, turn) {
-        const active = turn === team ? `active-${team.toLowerCase()}` : '';
-        const captain = team === 'A' ? state.captainA : state.captainB;
-        return `<aside class="team-column team-${team.toLowerCase()} ${active}">
-          <div class="team-title"><span>TEAM ${team}</span><h3>${esc(captain)}</h3></div>
-          <div class="team-list">
-            ${items.length ? items.map(({ pick, player }) => `<div class="team-player">${avatar(player)}<div><strong>${esc(player.name)}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></div><span class="pick-no">#${pick.pickNumber}</span></div>`).join('') : '<div class="empty">아직 지명된 선수가 없습니다.</div>'}
-          </div>
-        </aside>`;
-      }
-
-      function playerCard(player) {
-        return `<button class="player-card" data-open-player="${esc(player.id)}">
-          <div class="player-thumb">${player.photo ? `<img src="${esc(player.photo)}" alt="${esc(player.name)}" />` : initials(player.name)}</div>
-          <strong>${esc(player.name)}</strong>
-          <small>${esc(player.position)} · ${esc(player.strengths)}</small>
-        </button>`;
-      }
-
-      function playerModal(player, turn) {
-        if (!player) return '';
-        const captain = turn === 'A' ? state.captainA : state.captainB;
-        return `<div class="modal-backdrop" data-close-modal>
-          <article class="modal" role="dialog" aria-modal="true" aria-label="선수 지명 확인">
-            <div class="modal-top"><button class="icon-btn" data-close-modal>×</button></div>
-            <div class="modal-body">
-              <div class="modal-profile">
-                ${avatar(player, 'profile-photo')}
-                <div>
-                  <h2>${esc(player.name)}</h2>
-                  <div class="nickname">${esc(player.nickname || player.strengths)}</div>
-                  <div class="badges"><span class="badge">${esc(player.position)}</span><span class="badge">${esc(player.foot)}</span><span class="badge">${esc(player.strengths)}</span></div>
-                  <p class="intro-copy">${esc(player.intro)}</p>
-                </div>
-              </div>
-              <div class="stats">${statRow('공격', player.attack)}${statRow('수비', player.defense)}${statRow('체력', player.stamina)}${statRow('스피드', player.pace)}${statRow('인망력', player.popularity)}</div>
-              <div class="modal-actions">
-                <button class="btn secondary" data-close-modal>닫기</button>
-                <button class="btn ${turn === 'B' ? 'warning' : 'blue'}" data-pick="${esc(player.id)}">${esc(captain)} · TEAM ${turn}로 지명</button>
-              </div>
-            </div>
-          </article>
-        </div>`;
-      }
-
-      function resultView() {
-        const teamA = getTeam('A').map(x => x.player);
-        const teamB = getTeam('B').map(x => x.player);
-        return `<main class="shell">
-          ${topbar()}
-          ${stageNav()}
-          <section class="panel panel-pad">
-            <div class="section-head">
-              <div><h2>팀 편성 완료</h2><p>결과를 복사하거나 인쇄해 단체방에 공유할 수 있습니다.</p></div>
-              <div class="top-actions result-actions">
-                <button class="btn secondary" data-return-draft>드래프트로 돌아가기</button>
-                <button class="btn blue" data-copy-result>결과 복사</button>
-                <button class="btn" data-print>인쇄 / PDF</button>
-              </div>
-            </div>
-            <div class="result-hero">
-              <div class="result-team a"><small>TEAM A</small><h2>${esc(state.captainA)}</h2><p>${teamA.length}명 · ${esc(teamA.map(p => p.name).join(', ') || '선수 없음')}</p></div>
-              <div class="result-vs">VS</div>
-              <div class="result-team b"><small>TEAM B</small><h2>${esc(state.captainB)}</h2><p>${teamB.length}명 · ${esc(teamB.map(p => p.name).join(', ') || '선수 없음')}</p></div>
-            </div>
-            <div class="result-grid">
-              <div class="result-list">${teamA.length ? teamA.map((p, i) => resultPlayer(p, i + 1, 'A')).join('') : '<div class="empty">TEAM A 선수가 없습니다.</div>'}</div>
-              <div class="result-list">${teamB.length ? teamB.map((p, i) => resultPlayer(p, i + 1, 'B')).join('') : '<div class="empty">TEAM B 선수가 없습니다.</div>'}</div>
-            </div>
-            ${balanceSummary(teamA, teamB)}
+      function captainsView() {
+        const ready = state.captainAId && state.captainBId && state.captainAId !== state.captainBId;
+        const remaining = state.players.length - (ready ? 2 : [state.captainAId, state.captainBId].filter(Boolean).length);
+        return `<main class="shell">${topbar()}${stageNav()}
+          <section class="panel panel-pad captain-select-layout">
+            <div class="section-head"><div><h2>주장 2명 선정</h2><p>14명의 선수 중 한 명을 TEAM A 주장, 다른 한 명을 TEAM B 주장으로 선택하세요.</p></div><div class="top-actions"><button class="btn secondary" data-back-profiles>프로필 다시 보기</button><button class="btn" data-go-minigame ${ready ? '' : 'disabled'}>사다리타기</button></div></div>
+            <div class="captain-slots">${captainSlot('A')}<div class="captain-vs">VS</div>${captainSlot('B')}</div>
+            <div class="notice">선택된 주장 2명은 각 팀의 <b>고정 멤버</b>가 됩니다. 현재 드래프트 대상은 ${remaining}명이며, 두 주장이 모두 정해지면 사다리타기로 선 지명권을 결정합니다.</div>
+            <div class="captain-choice-grid">${state.players.map(captainChoiceCard).join('')}</div>
+            <div class="captain-select-actions"><button class="btn secondary" data-clear-all-captains>주장 선택 초기화</button><button class="btn blue" data-go-minigame ${ready ? '' : 'disabled'}>${ready ? `${esc(captainName('A'))} vs ${esc(captainName('B'))} 사다리타기` : '주장 두 명을 선택하세요'}</button></div>
           </section>
         </main>`;
       }
 
-      function resultPlayer(player, index, team) {
-        return `<div class="team-player team-${team.toLowerCase()}">${avatar(player)}<div><strong>${index}. ${esc(player.name)}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></div><span class="pick-no">인망 ${clamp(player.popularity)}</span></div>`;
+      function generateLadderRungs() {
+        const count = 5 + Math.floor(Math.random() * 5);
+        const candidates = [];
+        for (let y = 125; y <= 575; y += 25) candidates.push(y);
+        for (let i = candidates.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+        }
+        return candidates.slice(0, count).sort((a,b) => a-b);
       }
 
-      function average(players, key) {
-        if (!players.length) return 0;
-        return Math.round(players.reduce((sum, p) => sum + clamp(p[key]), 0) / players.length);
+      function ladderRoute(startLane, rungs = state.ladderRungs) {
+        const xs = [170, 430], top = 65, bottom = 635;
+        let lane = startLane;
+        let d = `M ${xs[lane]} ${top}`;
+        for (const y of rungs) {
+          d += ` L ${xs[lane]} ${y} L ${xs[1-lane]} ${y}`;
+          lane = 1 - lane;
+        }
+        d += ` L ${xs[lane]} ${bottom}`;
+        return { d, endLane: lane };
       }
 
-      function balanceSummary(teamA, teamB) {
-        const rows = [
-          ['공격', 'attack'], ['수비', 'defense'], ['체력', 'stamina'], ['스피드', 'pace'], ['인망력', 'popularity']
-        ];
-        return `<div class="balance-card"><h3>팀 평균 능력치</h3>${rows.map(([label, key]) => {
-          const a = average(teamA, key), b = average(teamB, key);
-          return `<div class="balance-row"><span>${label}</span><div class="bar"><span style="width:${a}%"></span></div><b>${a}</b><div class="bar"><span style="width:${b}%"></span></div><b>${b}</b></div>`;
-        }).join('')}</div>`;
+      function ladderWinnerTeam() {
+        const routeA = ladderRoute(0);
+        return routeA.endLane === state.ladderPrizeLane ? 'A' : 'B';
       }
+
+      function newLadder() {
+        clearMiniGameTimer();
+        setState({
+          stage: 'minigame',
+          gameStatus: 'idle',
+          gameWinner: null,
+          gameMessage: '사다리가 준비됐습니다. 결과 확인을 누르면 두 주장 경로가 동시에 출발합니다.',
+          ladderRungs: generateLadderRungs(),
+          ladderPrizeLane: Math.random() < .5 ? 0 : 1,
+          picks: [],
+          selectedPlayerId: null
+        });
+      }
+
+      function minigameView() {
+        if (!captainPlayer('A') || !captainPlayer('B')) { queueMicrotask(() => setState({ stage: 'captains' })); return ''; }
+        if (!state.ladderRungs.length) { queueMicrotask(newLadder); return ''; }
+        const routeA = ladderRoute(0);
+        const routeB = ladderRoute(1);
+        const winner = state.gameWinner;
+        const statusClass = state.gameStatus === 'running' ? 'running' : state.gameStatus === 'done' ? 'done' : 'idle';
+        const rungSvg = state.ladderRungs.map(y => `<line class="ladder-rung" x1="170" y1="${y}" x2="430" y2="${y}" />`).join('');
+        const prize = lane => lane === state.ladderPrizeLane
+          ? '<div class="ladder-prize first">🥇 선 지명</div>'
+          : '<div class="ladder-prize second">⏳ 후 지명</div>';
+        const routeClass = team => winner && winner === team ? 'winner-route' : '';
+        return `<main class="shell">${topbar()}${stageNav()}
+          <section class="panel panel-pad minigame-layout">
+            <div class="section-head"><div><h2>선 지명권 사다리타기</h2><p>두 주장 경로가 사다리를 따라 내려갑니다. ‘선 지명’에 도착한 주장이 첫 번째 선수를 고릅니다.</p></div><div class="top-actions"><button class="btn secondary" data-back-captains>주장 다시 고르기</button></div></div>
+            <div class="ladder-board ${statusClass}">
+              <div class="ladder-captains">
+                <div class="ladder-captain team-a">${avatar(captainPlayer('A'))}<div class="ladder-captain-copy"><small>TEAM A CAPTAIN</small><strong>${esc(captainName('A'))}</strong></div></div>
+                <div class="ladder-captain team-b">${avatar(captainPlayer('B'))}<div class="ladder-captain-copy"><small>TEAM B CAPTAIN</small><strong>${esc(captainName('B'))}</strong></div></div>
+              </div>
+              <div class="ladder-svg-wrap">
+                <svg class="ladder-svg" viewBox="0 0 600 700" role="img" aria-label="선 지명권 사다리">
+                  <line class="ladder-rail" x1="170" y1="65" x2="170" y2="635" />
+                  <line class="ladder-rail" x1="430" y1="65" x2="430" y2="635" />
+                  ${rungSvg}
+                  ${state.ladderRungs.map(y => `<circle class="ladder-node" cx="170" cy="${y}" r="6"/><circle class="ladder-node" cx="430" cy="${y}" r="6"/>`).join('')}
+                  <path pathLength="1" class="ladder-route team-a ${routeClass('A')}" d="${routeA.d}" />
+                  <path pathLength="1" class="ladder-route team-b ${routeClass('B')}" d="${routeB.d}" />
+                </svg>
+              </div>
+              <div class="ladder-prizes">${prize(0)}${prize(1)}</div>
+            </div>
+            <p class="ladder-message">${esc(state.gameMessage)}</p>
+            ${state.gameStatus === 'done' ? `<div class="winner-banner">🏆 ${esc(captainName(state.gameWinner))} · TEAM ${state.gameWinner} 선 지명권 획득</div>` : ''}
+            <div class="minigame-actions">
+              <button class="btn secondary" data-new-ladder ${state.gameStatus === 'running' ? 'disabled' : ''}>↻ 새 사다리 만들기</button>
+              <button class="btn blue" data-start-minigame ${state.gameStatus === 'running' ? 'disabled' : ''}>${state.gameStatus === 'done' ? '결과 다시 보기' : state.gameStatus === 'running' ? '사다리 타는 중...' : '▶ 결과 확인'}</button>
+              <button class="btn" data-start-draft ${state.gameStatus === 'done' && state.gameWinner ? '' : 'disabled'}>${state.gameStatus === 'done' ? `${esc(captainName(state.gameWinner))} 선 지명으로 드래프트 시작` : '결과 확인 후 드래프트 시작'}</button>
+            </div>
+          </section>
+        </main>`;
+      }
+
+      function clearMiniGameTimer() {
+        if (miniGameTimer) clearTimeout(miniGameTimer);
+        miniGameTimer = null;
+      }
+
+      function startMiniGame() {
+        if (!captainPlayer('A') || !captainPlayer('B')) { toast('주장 두 명을 먼저 선택해 주세요.', true); return; }
+        if (!state.ladderRungs.length) { newLadder(); return; }
+        clearMiniGameTimer();
+        const winner = ladderWinnerTeam();
+        setState({ stage: 'minigame', gameStatus: 'running', gameWinner: null, gameMessage: '두 주장이 사다리를 타고 내려가는 중입니다...', picks: [] });
+        miniGameTimer = setTimeout(() => {
+          miniGameTimer = null;
+          finishMiniGame(winner, '사다리타기 결과 선 지명 칸에 도착했습니다.');
+        }, 2550);
+      }
+
+      function finishMiniGame(team, reason) {
+        clearMiniGameTimer();
+        const winner = team === 'B' ? 'B' : 'A';
+        const message = `${captainName(winner)} 승리! ${reason}`;
+        setState({ stage: 'minigame', firstCaptain: winner, gameStatus: 'done', gameWinner: winner, gameMessage: message, picks: [] });
+        toast(`${captainName(winner)}가 선 지명권을 획득했습니다.`);
+      }
+
+      function draftView() {
+        if (!captainPlayer('A') || !captainPlayer('B')) { queueMicrotask(() => setState({ stage: 'captains' })); return ''; }
+        const pool = draftPlayers();
+        const pickedIds = new Set(state.picks.map(p => p.playerId));
+        const available = pool.filter(p => !pickedIds.has(p.id));
+        const teamA = pickedTeam('A');
+        const teamB = pickedTeam('B');
+        if (available.length === 0 && pool.length > 0 && state.stage !== 'result') queueMicrotask(() => setState({ stage: 'result', selectedPlayerId: null }));
+        const turn = nextTurn();
+        const captain = captainName(turn);
+        return `<main class="shell">${topbar()}${stageNav()}
+          <div class="draft-head"><div class="captain-chip"><strong>TEAM A</strong> · ${esc(captainName('A'))} · 주장 포함 ${teamA.length + 1}명</div><div class="turn-card"><span>${esc(modeLabel())} · 선 지명 ${esc(captainName(state.firstCaptain))} · ${state.picks.length + 1}번째 선택</span><b class="pulse">${esc(captain)} 지명 차례</b></div><div class="captain-chip right"><strong>TEAM B</strong> · ${esc(captainName('B'))} · 주장 포함 ${teamB.length + 1}명</div></div>
+          <div class="draft-layout">${teamColumn('A', teamA, turn)}
+            <section class="pool-panel"><div class="pool-head"><h3>남은 선수</h3><span>${available.length}명 · 총 ${pool.length}명 드래프트</span></div>${available.length ? `<div class="player-pool">${available.map(playerCard).join('')}</div>` : '<div class="empty">모든 선수가 지명되었습니다.</div>'}
+              <div class="pool-actions"><button class="btn secondary small" data-back-profiles>프로필 보기</button><button class="btn secondary small" data-back-minigame>사다리타기</button><button class="btn secondary small" data-back-captains>주장 선정</button><button class="btn secondary small" data-undo ${state.picks.length ? '' : 'disabled'}>마지막 지명 취소</button><button class="btn warning small" data-finish-early ${state.picks.length ? '' : 'disabled'}>현재 상태로 팀 확정</button></div>
+            </section>${teamColumn('B', teamB, turn)}</div>
+          ${state.selectedPlayerId ? playerModal(state.players.find(p => p.id === state.selectedPlayerId), turn) : ''}
+        </main>`;
+      }
+
+      function teamColumn(team, items, turn) {
+        const active = turn === team ? `active-${team.toLowerCase()}` : '';
+        const captain = captainPlayer(team);
+        return `<aside class="team-column team-${team.toLowerCase()} ${active}"><div class="team-title"><span>TEAM ${team}</span><h3>${esc(captainName(team))}</h3></div><div class="team-list">
+          ${captain ? `<div class="team-player captain-fixed">${avatar(captain)}<div><strong>${esc(captain.name)}</strong><small>${esc(captain.position)} · ${esc(captain.strengths)}</small></div><span class="captain-tag">CAPTAIN</span></div>` : ''}
+          ${items.length ? items.map(({pick,player}) => `<div class="team-player">${avatar(player)}<div><strong>${esc(player.name)}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></div><span class="pick-no">#${pick.pickNumber}</span></div>`).join('') : '<div class="empty">아직 지명된 선수가 없습니다.</div>'}
+        </div></aside>`;
+      }
+
+      function playerCard(player) { return `<button class="player-card" data-open-player="${esc(player.id)}"><div class="player-thumb">${player.photo ? `<img src="${esc(player.photo)}" alt="${esc(player.name)}" />` : initials(player.name)}</div><strong>${esc(player.name)}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></button>`; }
+
+      function playerModal(player, turn) {
+        if (!player) return '';
+        return `<div class="modal-backdrop" data-close-modal><article class="modal" role="dialog" aria-modal="true"><div class="modal-top"><button class="icon-btn" data-close-modal>×</button></div><div class="modal-body"><div class="modal-profile">${avatar(player,'profile-photo')}<div><h2>${esc(player.name)}</h2><div class="nickname">${esc(player.nickname || player.strengths)}</div><div class="badges"><span class="badge">${esc(player.position)}</span><span class="badge">${esc(player.foot)}</span><span class="badge">${esc(player.strengths)}</span></div><p class="intro-copy">${esc(player.intro)}</p></div></div><div class="stats">${statRow('공격',player.attack)}${statRow('수비',player.defense)}${statRow('체력',player.stamina)}${statRow('스피드',player.pace)}${statRow('인망력',player.popularity)}</div><div class="modal-actions"><button class="btn secondary" data-close-modal>닫기</button><button class="btn ${turn === 'B' ? 'warning' : 'blue'}" data-pick="${esc(player.id)}">${esc(captainName(turn))} · TEAM ${turn}로 지명</button></div></div></article></div>`;
+      }
+
+      function resultView() {
+        const teamAEntries = fullTeamEntries('A');
+        const teamBEntries = fullTeamEntries('B');
+        const teamA = teamAEntries.map(x => x.player);
+        const teamB = teamBEntries.map(x => x.player);
+        return `<main class="shell">${topbar()}${stageNav()}<section class="panel panel-pad"><div class="section-head"><div><h2>팀 편성 완료</h2><p>주장 포함 최종 명단과 평균 능력치입니다.</p></div><div class="top-actions result-actions"><button class="btn secondary" data-return-draft>드래프트로 돌아가기</button><button class="btn blue" data-copy-result>결과 복사</button><button class="btn" data-print>인쇄 / PDF</button></div></div>
+          <div class="result-hero"><div class="result-team a"><small>TEAM A · CAPTAIN</small><h2>${esc(captainName('A'))}</h2><p>${teamA.length}명 · ${esc(teamA.map(p => p.name).join(', ') || '선수 없음')}</p></div><div class="result-vs">VS</div><div class="result-team b"><small>TEAM B · CAPTAIN</small><h2>${esc(captainName('B'))}</h2><p>${teamB.length}명 · ${esc(teamB.map(p => p.name).join(', ') || '선수 없음')}</p></div></div>
+          <div class="result-grid"><div class="result-list">${teamAEntries.length ? teamAEntries.map((e,i) => resultPlayer(e,i+1,'A')).join('') : '<div class="empty">TEAM A 선수가 없습니다.</div>'}</div><div class="result-list">${teamBEntries.length ? teamBEntries.map((e,i) => resultPlayer(e,i+1,'B')).join('') : '<div class="empty">TEAM B 선수가 없습니다.</div>'}</div></div>${balanceSummary(teamA,teamB)}</section></main>`;
+      }
+
+      function resultPlayer(entry, index, team) { const {player,isCaptain,pickNumber} = entry; return `<div class="team-player team-${team.toLowerCase()} ${isCaptain ? 'captain-fixed' : ''}">${avatar(player)}<div><strong>${index}. ${esc(player.name)}${isCaptain ? ' (주장)' : ''}</strong><small>${esc(player.position)} · ${esc(player.strengths)}</small></div><span class="pick-no">${isCaptain ? 'C' : '#' + pickNumber}</span></div>`; }
+      function average(players,key) { return players.length ? Math.round(players.reduce((sum,p) => sum + clamp(p[key]),0) / players.length) : 0; }
+      function balanceSummary(teamA,teamB) { const rows=[['공격','attack'],['수비','defense'],['체력','stamina'],['스피드','pace'],['인망력','popularity']]; return `<div class="balance-card"><h3>주장 포함 팀 평균 능력치</h3>${rows.map(([label,key]) => { const a=average(teamA,key), b=average(teamB,key); return `<div class="balance-row"><span>${label}</span><div class="bar"><span style="width:${a}%"></span></div><b>${a}</b><div class="bar"><span style="width:${b}%"></span></div><b>${b}</b></div>`; }).join('')}</div>`; }
 
       function collectSetup() {
-        const eventName = document.getElementById('eventName')?.value.trim() || '풋살 캡틴 드래프트';
-        const captainA = document.getElementById('captainA')?.value.trim() || '주장 A';
-        const captainB = document.getElementById('captainB')?.value.trim() || '주장 B';
-        const mode = document.getElementById('mode')?.value === 'alternate' ? 'alternate' : 'snake';
-        const firstCaptain = document.getElementById('firstCaptain')?.value === 'B' ? 'B' : 'A';
-        return { eventName, captainA, captainB, mode, firstCaptain };
+        return {
+          eventName: document.getElementById('eventName')?.value.trim() || '풋살 캡틴 드래프트',
+          mode: document.getElementById('mode')?.value === 'alternate' ? 'alternate' : 'snake',
+          firstCaptain: state.firstCaptain === 'B' ? 'B' : 'A'
+        };
       }
 
       function collectPlayer(id) {
@@ -1098,236 +1094,141 @@ Why MS?: 상대 조를 망치고 Make Our Team Great Again`,
         card.querySelectorAll('[data-key]').forEach(input => {
           const key = input.dataset.key;
           if (['attack','defense','stamina','pace','popularity'].includes(key)) next[key] = clamp(input.value);
-          else if (key === 'photo') {
-            const value = input.value.trim();
-            if (value) next.photo = value;
-          } else next[key] = input.value.trim();
+          else if (key === 'photo') { const value = input.value.trim(); if (value) next.photo = value; }
+          else next[key] = input.value.trim();
         });
         if (!next.name) next.name = '이름 없음';
         return next;
       }
 
-      function saveAllVisiblePlayers() {
-        if (state.stage !== 'setup') return state.players;
-        return state.players.map(p => collectPlayer(p.id));
-      }
+      function saveAllVisiblePlayers() { return state.stage === 'setup' ? state.players.map(p => collectPlayer(p.id)) : state.players; }
 
       function render() {
         if (state.stage === 'setup') app.innerHTML = setupView();
         else if (state.stage === 'profiles') app.innerHTML = profileView();
+        else if (state.stage === 'captains') app.innerHTML = captainsView();
+        else if (state.stage === 'minigame') app.innerHTML = minigameView();
         else if (state.stage === 'draft') app.innerHTML = draftView();
         else app.innerHTML = resultView();
         document.title = `${state.eventName || '풋살 드래프트'} · ${state.stage === 'result' ? '팀 결과' : '진행'}`;
       }
 
-      function movePlayer(id, direction) {
+      function movePlayer(id,direction) {
         const players = saveAllVisiblePlayers();
-        const index = players.findIndex(p => p.id === id);
-        const target = index + direction;
+        const index = players.findIndex(p => p.id === id), target = index + direction;
         if (index < 0 || target < 0 || target >= players.length) return;
-        [players[index], players[target]] = [players[target], players[index]];
+        [players[index],players[target]] = [players[target],players[index]];
         setState({ players });
       }
 
-      function pickPlayer(id) {
-        if (state.picks.some(p => p.playerId === id)) return;
-        const team = nextTurn();
-        const picks = [...state.picks, { playerId: id, team, pickNumber: state.picks.length + 1, pickedAt: Date.now() }];
-        const done = picks.length >= state.players.length;
-        setState({ picks, selectedPlayerId: null, stage: done ? 'result' : 'draft' });
+      function assignCaptain(team,id) {
         const player = state.players.find(p => p.id === id);
+        if (!player) return;
+        const otherId = team === 'A' ? state.captainBId : state.captainAId;
+        if (id === otherId) { toast('같은 선수를 두 팀 주장으로 지정할 수 없습니다.', true); return; }
+        let picks = state.picks;
+        if (picks.length && id !== (team === 'A' ? state.captainAId : state.captainBId)) {
+          if (!confirm('주장을 변경하면 기존 지명 기록이 초기화됩니다. 계속할까요?')) return;
+          picks = [];
+        }
+        const patch = team === 'A' ? { captainAId: id } : { captainBId: id };
+        clearMiniGameTimer();
+        setState({ ...patch, picks, selectedPlayerId: null, stage: 'captains', gameStatus: 'idle', gameWinner: null, gameMessage: '새 사다리를 만들고 결과 확인을 눌러 주세요.', ladderRungs: [] });
+        toast(`${player.name} → TEAM ${team} 주장`);
+      }
+
+      function pickPlayer(id) {
+        if ([state.captainAId,state.captainBId].includes(id) || state.picks.some(p => p.playerId === id)) return;
+        const team = nextTurn();
+        const picks = [...state.picks, { playerId:id, team, pickNumber:state.picks.length + 1, pickedAt:Date.now() }];
+        const done = picks.length >= draftPlayers().length;
+        const player = state.players.find(p => p.id === id);
+        setState({ picks, selectedPlayerId:null, stage: done ? 'result' : 'draft' });
         toast(`${player?.name || '선수'} → TEAM ${team}`);
       }
 
       async function compressImage(file) {
-        const dataUrl = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-        const img = await new Promise((resolve, reject) => {
-          const image = new Image();
-          image.onload = () => resolve(image);
-          image.onerror = reject;
-          image.src = dataUrl;
-        });
-        const maxSide = 720;
-        const ratio = Math.min(1, maxSide / Math.max(img.width, img.height));
-        const canvas = document.createElement('canvas');
-        canvas.width = Math.max(1, Math.round(img.width * ratio));
-        canvas.height = Math.max(1, Math.round(img.height * ratio));
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        return canvas.toDataURL('image/jpeg', .78);
+        const dataUrl = await new Promise((resolve,reject) => { const reader=new FileReader(); reader.onload=()=>resolve(reader.result); reader.onerror=reject; reader.readAsDataURL(file); });
+        const img = await new Promise((resolve,reject) => { const image=new Image(); image.onload=()=>resolve(image); image.onerror=reject; image.src=dataUrl; });
+        const maxSide=720, ratio=Math.min(1,maxSide/Math.max(img.width,img.height));
+        const canvas=document.createElement('canvas'); canvas.width=Math.max(1,Math.round(img.width*ratio)); canvas.height=Math.max(1,Math.round(img.height*ratio));
+        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+        return canvas.toDataURL('image/jpeg',.78);
       }
 
       function exportJson() {
-        const payload = { ...state, selectedPlayerId: null, exportedAt: new Date().toISOString() };
-        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `futsal-draft-${new Date().toISOString().slice(0,10)}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
+        const payload={...state,selectedPlayerId:null,exportedAt:new Date().toISOString()};
+        const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=document.createElement('a');
+        a.href=url; a.download=`futsal-draft-${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url);
       }
 
       function resultText() {
-        const a = getTeam('A').map(x => x.player.name);
-        const b = getTeam('B').map(x => x.player.name);
-        return `[${state.eventName}]\n\nTEAM A · ${state.captainA}\n${a.map((n, i) => `${i + 1}. ${n}`).join('\n') || '-'}\n\nTEAM B · ${state.captainB}\n${b.map((n, i) => `${i + 1}. ${n}`).join('\n') || '-'}`;
+        const make = team => fullTeamEntries(team).map((e,i) => `${i+1}. ${e.player.name}${e.isCaptain ? ' (주장)' : ''}`).join('\n') || '-';
+        return `[${state.eventName}]\n\nTEAM A · ${captainName('A')}\n${make('A')}\n\nTEAM B · ${captainName('B')}\n${make('B')}`;
       }
 
-      app.addEventListener('click', async (event) => {
+      app.addEventListener('click', async event => {
         const target = event.target.closest('button, [data-close-modal]');
         if (!target) return;
-
-        if (target.matches('[data-fullscreen]')) {
-          try {
-            if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
-            else await document.exitFullscreen();
-          } catch { toast('이 브라우저에서는 전체 화면을 열 수 없습니다.', true); }
-          return;
-        }
-
+        if (target.matches('[data-fullscreen]')) { try { if (!document.fullscreenElement) await document.documentElement.requestFullscreen(); else await document.exitFullscreen(); } catch { toast('이 브라우저에서는 전체 화면을 열 수 없습니다.',true); } return; }
         if (target.matches('[data-export]')) { exportJson(); toast('백업 파일을 저장했습니다.'); return; }
         if (target.matches('[data-import]')) { jsonImport.click(); return; }
-        if (target.matches('[data-reset]')) {
-          if (!confirm('현재 선수와 드래프트 기록을 모두 초기화할까요?')) return;
-          state = initialState(); saveState(); render(); toast('초기화했습니다.'); return;
-        }
-
-        if (target.matches('[data-save-setup]')) {
-          const players = saveAllVisiblePlayers();
-          setState({ ...collectSetup(), players });
-          toast('설정을 저장했습니다.'); return;
-        }
-
-        if (target.matches('[data-add-player]')) {
-          const players = saveAllVisiblePlayers();
-          players.push({ id: makeId(), name: `선수 ${players.length + 1}`, nickname: '', position: 'ALL', foot: '오른발', intro: '나를 한 줄로 소개해 주세요.', strengths: '팀플레이', attack: 70, defense: 70, stamina: 70, pace: 70, popularity: 70, photo: '' });
-          setState({ players }); toast('선수를 추가했습니다.'); return;
-        }
-
-        if (target.matches('[data-save-player]')) {
-          const id = target.dataset.savePlayer;
-          const players = state.players.map(p => p.id === id ? collectPlayer(id) : p);
-          const saved = players.find(p => p.id === id);
-          setState({ players }); toast(`${saved?.name || '선수'} 프로필을 저장했습니다.`); return;
-        }
-
-        if (target.matches('[data-delete-player]')) {
-          const id = target.dataset.deletePlayer;
-          const p = state.players.find(x => x.id === id);
-          if (!confirm(`${p?.name || '이 선수'}를 삭제할까요?`)) return;
-          const players = saveAllVisiblePlayers().filter(x => x.id !== id);
-          const picks = state.picks.filter(x => x.playerId !== id).map((x, i) => ({ ...x, pickNumber: i + 1 }));
-          setState({ players, picks }); return;
-        }
-
-        if (target.matches('[data-move-up]')) { movePlayer(target.dataset.moveUp, -1); return; }
-        if (target.matches('[data-move-down]')) { movePlayer(target.dataset.moveDown, 1); return; }
-
-        if (target.matches('[data-photo-upload]')) {
-          photoTargetId = target.dataset.photoUpload;
-          const input = document.createElement('input');
-          input.type = 'file'; input.accept = 'image/*';
-          input.onchange = async () => {
-            const file = input.files?.[0];
-            if (!file) return;
-            try {
-              const photo = await compressImage(file);
-              const currentPlayers = saveAllVisiblePlayers();
-              const players = currentPlayers.map(p => p.id === photoTargetId ? { ...p, photo } : p);
-              setState({ players }); toast('사진을 등록했습니다.');
-            } catch { toast('사진을 읽지 못했습니다.', true); }
-          };
-          input.click(); return;
-        }
-
-        if (target.matches('[data-go-profiles]')) {
-          const players = saveAllVisiblePlayers().filter(p => p.name.trim());
-          if (players.length < 2) { toast('선수를 최소 2명 등록해 주세요.', true); return; }
-          if (state.picks.length && !confirm('선수 소개를 다시 시작하면 기존 지명 기록을 유지합니다. 계속할까요?')) return;
-          setState({ ...collectSetup(), players, stage: 'profiles', profileIndex: 0, selectedPlayerId: null }); return;
-        }
-
-        if (target.matches('[data-back-setup]')) { setState({ stage: 'setup', selectedPlayerId: null }); return; }
-        if (target.matches('[data-profile-prev]')) { setState({ profileIndex: (state.profileIndex - 1 + state.players.length) % state.players.length }); return; }
-        if (target.matches('[data-profile-next]')) { setState({ profileIndex: (state.profileIndex + 1) % state.players.length }); return; }
-        if (target.matches('[data-profile-index]')) { setState({ profileIndex: Number(target.dataset.profileIndex) || 0 }); return; }
-
-        if (target.matches('[data-start-draft]')) {
-          if (state.picks.length && !confirm('기존 지명 기록이 있습니다. 그대로 이어서 진행할까요?\n취소 후 초기화 버튼으로 새로 시작할 수 있습니다.')) return;
-          setState({ stage: 'draft', selectedPlayerId: null }); return;
-        }
-        if (target.matches('[data-back-profiles]')) { setState({ stage: 'profiles', selectedPlayerId: null }); return; }
-
-        if (target.matches('[data-open-player]')) { setState({ selectedPlayerId: target.dataset.openPlayer }); return; }
-        if (target.matches('[data-close-modal]')) {
-          if (target.classList.contains('modal-backdrop') && event.target !== target) return;
-          setState({ selectedPlayerId: null }); return;
-        }
+        if (target.matches('[data-reset]')) { if (!confirm('현재 선수와 드래프트 기록을 모두 초기화할까요?')) return; clearMiniGameTimer(); state=initialState(); saveState(); render(); toast('초기화했습니다.'); return; }
+        if (target.matches('[data-save-setup]')) { const players=saveAllVisiblePlayers(); setState({...collectSetup(),players}); toast('설정을 저장했습니다.'); return; }
+        if (target.matches('[data-add-player]')) { const players=saveAllVisiblePlayers(); players.push({id:makeId(),name:`선수 ${players.length+1}`,nickname:'',position:'ALL',foot:'오른발',intro:'나를 한 줄로 소개해 주세요.',strengths:'팀플레이',attack:70,defense:70,stamina:70,pace:70,popularity:70,photo:''}); setState({players}); toast('선수를 추가했습니다.'); return; }
+        if (target.matches('[data-save-player]')) { const id=target.dataset.savePlayer; const players=state.players.map(p=>p.id===id?collectPlayer(id):p); setState({players}); toast(`${players.find(p=>p.id===id)?.name || '선수'} 프로필을 저장했습니다.`); return; }
+        if (target.matches('[data-delete-player]')) { const id=target.dataset.deletePlayer, p=state.players.find(x=>x.id===id); if (!confirm(`${p?.name || '이 선수'}를 삭제할까요?`)) return; const players=saveAllVisiblePlayers().filter(x=>x.id!==id); const picks=state.picks.filter(x=>x.playerId!==id).map((x,i)=>({...x,pickNumber:i+1})); setState({players,picks,captainAId:state.captainAId===id?null:state.captainAId,captainBId:state.captainBId===id?null:state.captainBId}); return; }
+        if (target.matches('[data-move-up]')) { movePlayer(target.dataset.moveUp,-1); return; }
+        if (target.matches('[data-move-down]')) { movePlayer(target.dataset.moveDown,1); return; }
+        if (target.matches('[data-photo-upload]')) { photoTargetId=target.dataset.photoUpload; const input=document.createElement('input'); input.type='file'; input.accept='image/*'; input.onchange=async()=>{ const file=input.files?.[0]; if(!file)return; try { const photo=await compressImage(file); const players=saveAllVisiblePlayers().map(p=>p.id===photoTargetId?{...p,photo}:p); setState({players}); toast('사진을 등록했습니다.'); } catch { toast('사진을 읽지 못했습니다.',true); } }; input.click(); return; }
+        if (target.matches('[data-go-profiles]')) { const players=saveAllVisiblePlayers().filter(p=>p.name.trim()); if(players.length<4){toast('선수를 최소 4명 등록해 주세요.',true);return;} setState({...collectSetup(),players,stage:'profiles',profileIndex:0,selectedPlayerId:null}); return; }
+        if (target.matches('[data-back-setup]')) { setState({stage:'setup',selectedPlayerId:null}); return; }
+        if (target.matches('[data-profile-prev]')) { setState({profileIndex:(state.profileIndex-1+state.players.length)%state.players.length}); return; }
+        if (target.matches('[data-profile-next]')) { setState({profileIndex:(state.profileIndex+1)%state.players.length}); return; }
+        if (target.matches('[data-profile-index]')) { setState({profileIndex:Number(target.dataset.profileIndex)||0}); return; }
+        if (target.matches('[data-go-captains]')) { setState({stage:'captains',selectedPlayerId:null}); return; }
+        if (target.matches('[data-back-profiles]')) { setState({stage:'profiles',selectedPlayerId:null}); return; }
+        if (target.matches('[data-set-captain]')) { assignCaptain(target.dataset.setCaptain,target.dataset.playerId); return; }
+        if (target.matches('[data-clear-captain]')) { const team=target.dataset.clearCaptain; if(state.picks.length && !confirm('주장 선택을 해제하면 기존 지명 기록이 초기화됩니다. 계속할까요?')) return; clearMiniGameTimer(); setState({[team==='B'?'captainBId':'captainAId']:null,picks:[],stage:'captains',gameStatus:'idle',gameWinner:null,ladderRungs:[]}); return; }
+        if (target.matches('[data-clear-all-captains]')) { if(state.picks.length && !confirm('주장 선택과 기존 지명을 모두 초기화할까요?')) return; clearMiniGameTimer(); setState({captainAId:null,captainBId:null,picks:[],stage:'captains',gameStatus:'idle',gameWinner:null,ladderRungs:[]}); return; }
+        if (target.matches('[data-go-minigame]')) { if(!captainPlayer('A')||!captainPlayer('B')){toast('주장 A와 주장 B를 모두 선택해 주세요.',true);return;} if(state.picks.length && !confirm('사다리타기를 다시 하면 기존 지명 기록이 초기화됩니다. 계속할까요?'))return; newLadder(); return; }
+        if (target.matches('[data-new-ladder]')) { if(state.gameStatus==='running')return; newLadder(); return; }
+        if (target.matches('[data-start-minigame]')) { if(state.gameStatus==='running')return; startMiniGame(); return; }
+        if (target.matches('[data-start-draft]')) { if(!captainPlayer('A')||!captainPlayer('B')){toast('주장 A와 주장 B를 모두 선택해 주세요.',true);return;} if(state.gameStatus!=='done'||!state.gameWinner){toast('사다리타기를 먼저 완료해 주세요.',true);return;} clearMiniGameTimer(); const allowed=new Set(draftPlayers().map(p=>p.id)); const picks=state.picks.filter(p=>allowed.has(p.playerId)).map((p,i)=>({...p,pickNumber:i+1})); setState({stage:'draft',picks,selectedPlayerId:null,firstCaptain:state.gameWinner}); return; }
+        if (target.matches('[data-back-minigame]')) { if(state.picks.length && !confirm('사다리타기로 돌아가면 기존 지명 기록이 초기화됩니다. 계속할까요?'))return; clearMiniGameTimer(); setState({stage:'minigame',picks:[],selectedPlayerId:null}); return; }
+        if (target.matches('[data-back-captains]')) { clearMiniGameTimer(); setState({stage:'captains',selectedPlayerId:null}); return; }
+        if (target.matches('[data-open-player]')) { setState({selectedPlayerId:target.dataset.openPlayer}); return; }
+        if (target.matches('[data-close-modal]')) { if(target.classList.contains('modal-backdrop') && event.target!==target)return; setState({selectedPlayerId:null}); return; }
         if (target.matches('[data-pick]')) { pickPlayer(target.dataset.pick); return; }
-
-        if (target.matches('[data-undo]')) {
-          if (!state.picks.length) return;
-          const last = state.picks[state.picks.length - 1];
-          const player = state.players.find(p => p.id === last.playerId);
-          setState({ picks: state.picks.slice(0, -1), selectedPlayerId: null, stage: 'draft' });
-          toast(`${player?.name || '마지막 선수'} 지명을 취소했습니다.`); return;
-        }
-
-        if (target.matches('[data-finish-early]')) {
-          if (!confirm('남은 선수가 있어도 현재 상태로 팀을 확정할까요?')) return;
-          setState({ stage: 'result', selectedPlayerId: null }); return;
-        }
-        if (target.matches('[data-return-draft]')) { setState({ stage: 'draft', selectedPlayerId: null }); return; }
-        if (target.matches('[data-copy-result]')) {
-          try { await navigator.clipboard.writeText(resultText()); toast('팀 결과를 복사했습니다.'); }
-          catch { toast('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.', true); }
-          return;
-        }
+        if (target.matches('[data-undo]')) { if(!state.picks.length)return; const last=state.picks.at(-1), player=state.players.find(p=>p.id===last.playerId); setState({picks:state.picks.slice(0,-1),selectedPlayerId:null,stage:'draft'}); toast(`${player?.name || '마지막 선수'} 지명을 취소했습니다.`); return; }
+        if (target.matches('[data-finish-early]')) { if(!confirm('남은 선수가 있어도 현재 상태로 팀을 확정할까요?'))return; setState({stage:'result',selectedPlayerId:null}); return; }
+        if (target.matches('[data-return-draft]')) { setState({stage:'draft',selectedPlayerId:null}); return; }
+        if (target.matches('[data-copy-result]')) { try { await navigator.clipboard.writeText(resultText()); toast('팀 결과를 복사했습니다.'); } catch { toast('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.',true); } return; }
         if (target.matches('[data-print]')) { window.print(); return; }
       });
 
-      app.addEventListener('change', (event) => {
+      app.addEventListener('change', event => {
         if (state.stage !== 'setup') return;
-        if (event.target.matches('#eventName, #captainA, #captainB, #mode, #firstCaptain')) return;
-        if (event.target.matches('[data-key]')) {
-          const card = event.target.closest('[data-player-editor]');
-          if (!card) return;
-          const id = card.dataset.playerEditor;
-          const players = state.players.map(p => p.id === id ? collectPlayer(id) : p);
-          state = { ...state, players };
-          saveState();
-          const title = card.querySelector('.editor-title strong');
-          const current = players.find(p => p.id === id);
-          if (title && current) title.textContent = current.name;
-        }
+        if (event.target.matches('#eventName, #mode')) return;
+        if (event.target.matches('[data-key]')) { const card=event.target.closest('[data-player-editor]'); if(!card)return; const id=card.dataset.playerEditor; const players=state.players.map(p=>p.id===id?collectPlayer(id):p); state={...state,players}; saveState(); const title=card.querySelector('.editor-title strong'), current=players.find(p=>p.id===id); if(title&&current)title.textContent=current.name; }
       });
 
       jsonImport.addEventListener('change', async () => {
-        const file = jsonImport.files?.[0];
-        jsonImport.value = '';
-        if (!file) return;
-        try {
-          const parsed = JSON.parse(await file.text());
-          if (!parsed || !Array.isArray(parsed.players) || !Array.isArray(parsed.picks)) throw new Error('invalid');
-          state = { ...initialState(), ...parsed, selectedPlayerId: null };
-          saveState(); render(); toast('백업을 불러왔습니다.');
-        } catch { toast('올바른 드래프트 백업 파일이 아닙니다.', true); }
+        const file=jsonImport.files?.[0]; jsonImport.value=''; if(!file)return;
+        try { const parsed=JSON.parse(await file.text()); if(!parsed||!Array.isArray(parsed.players)||!Array.isArray(parsed.picks))throw new Error('invalid'); state=normalizedState(parsed); saveState(); render(); toast('백업을 불러왔습니다.'); }
+        catch { toast('올바른 드래프트 백업 파일이 아닙니다.',true); }
       });
 
-      window.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && state.selectedPlayerId) { setState({ selectedPlayerId: null }); return; }
-        if (state.stage !== 'profiles') return;
-        if (event.key === 'ArrowLeft') setState({ profileIndex: (state.profileIndex - 1 + state.players.length) % state.players.length });
-        if (event.key === 'ArrowRight' || event.key === ' ') {
-          if (event.key === ' ') event.preventDefault();
-          setState({ profileIndex: (state.profileIndex + 1) % state.players.length });
+      window.addEventListener('keydown', event => {
+        if(event.key==='Escape'&&state.selectedPlayerId){setState({selectedPlayerId:null});return;}
+        if(state.stage==='minigame' && !event.repeat && event.key===' ' && state.gameStatus!=='running') {
+          event.preventDefault();
+          startMiniGame();
+          return;
         }
+        if(state.stage!=='profiles')return;
+        if(event.key==='ArrowLeft')setState({profileIndex:(state.profileIndex-1+state.players.length)%state.players.length});
+        if(event.key==='ArrowRight'||event.key===' '){if(event.key===' ')event.preventDefault();setState({profileIndex:(state.profileIndex+1)%state.players.length});}
       });
 
       render();
